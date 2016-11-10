@@ -371,6 +371,7 @@
 				
 				<div class="category-tab"><!--category-tab-->
 					<?php 
+						$n = 0;
 						if(sizeof($brands) != 0){
 					?>
 						<div class="col-sm-12">
@@ -378,7 +379,18 @@
 							<?php 
 								foreach($brands as $fila):
 							?>
-								<li><a href="#<?=$fila->idmarca?>" data-toggle="tab"><?=$fila->nombre?></a></li>
+								<?php  
+									$n++;
+									if($n == 1){
+								?>
+									<li class="active"><a href="#<?=$fila->idmarca?>" data-toggle="tab"><?=$fila->nombre?></a></li>
+								<?php
+									}else{
+								?>
+									<li><a href="#<?=$fila->idmarca?>" data-toggle="tab"><?=$fila->nombre?></a></li>
+								<?php
+									}
+								?>
 							<?php
 				            	endforeach;
 				            ?>
