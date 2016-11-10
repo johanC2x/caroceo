@@ -1305,6 +1305,8 @@ ALTER TABLE `marca` CHANGE `idmarca` `idmarca` INT(11) UNSIGNED ZEROFILL NOT NUL
 ALTER TABLE `oceo`.`auto` CHANGE COLUMN `idauto` `idauto` INT(11) ZEROFILL;
 ALTER TABLE `auto` CHANGE `idauto` `idauto` INT(11) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
 
+ALTER TABLE `oceo`.`usuario` CHANGE COLUMN `idpersona` `idpersona` INT(11) ZEROFILL;
+
 --CLAVES FORANEAS
 ALTER TABLE `usuario` ADD INDEX(`idpersona`);
 
@@ -1312,3 +1314,6 @@ ALTER TABLE `usuario` ADD INDEX(`idpersona`);
 ALTER TABLE `persona` CHANGE `sexo` `sexo` VARCHAR(1) NULL DEFAULT NULL;
 
 ALTER TABLE `usuario` CHANGE `estado` `estado` VARCHAR(1) NULL DEFAULT NULL;
+
+ALTER TABLE `usuario` CHANGE `usuario` `usuario` VARCHAR(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+ALTER TABLE `usuario` CHANGE `passw` `passw` VARCHAR(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
