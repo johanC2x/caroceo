@@ -325,164 +325,68 @@
 			</div>
 			
 			<div class="col-sm-9 padding-right">
-				<div class="features_items"><!--features_items-->
-					<h2 class="title text-center">Features Items</h2>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="<?php echo base_url();?>img/home/product1.jpg" alt="" />
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+				<!--  LISTA  -->
+					<?php 
+						echo sizeof($products)."<br/>";
+						echo sizeof($brands);
+						if(sizeof($products) != 0){
+					?>
+					<div class="features_items"><!--features_items-->
+							<h2 class="title text-center">Features Items</h2>
+						<?php 
+							foreach($products as $fila):
+						?>
+							<div class="col-sm-4">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="<?php echo base_url();?>img/home/product1.jpg" alt="" />
+												<h2><?=$fila->precio?></h2>
+												<p><?=$fila->modelo?></p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											<div class="product-overlay">
+												<div class="overlay-content">
+													<h2><?=$fila->precio?></h2>
+													<p><?=$fila->modelo?></p>
+													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												</div>
+											</div>
 									</div>
-									<div class="product-overlay">
-										<div class="overlay-content">
-											<h2>$56</h2>
-											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-										</div>
-									</div>
-							</div>
-							<div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<?php echo base_url();?>img/home/product2.jpg" alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-								</div>
-								<div class="product-overlay">
-									<div class="overlay-content">
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+									<div class="choose">
+										<ul class="nav nav-pills nav-justified">
+											<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+											<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+										</ul>
 									</div>
 								</div>
 							</div>
-							<div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<?php echo base_url();?>img/home/product3.jpg" alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-								</div>
-								<div class="product-overlay">
-									<div class="overlay-content">
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-								</div>
-							</div>
-							<div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<?php echo base_url();?>img/home/product4.jpg" alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-								</div>
-								<div class="product-overlay">
-									<div class="overlay-content">
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-								</div>
-								<img src="<?php echo base_url();?>img/home/new.png" class="new" alt="" />
-							</div>
-							<div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<?php echo base_url();?>img/home/product5.jpg" alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-								</div>
-								<div class="product-overlay">
-									<div class="overlay-content">
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-								</div>
-								<img src="<?php echo base_url();?>img/home/sale.png" class="new" alt="" />
-							</div>
-							<div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<?php echo base_url();?>img/home/product6.jpg" alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-								</div>
-								<div class="product-overlay">
-									<div class="overlay-content">
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-								</div>
-							</div>
-							<div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					
-				</div><!--features_items-->
+						<?php
+			            	endforeach;
+			            ?> 		
+					</div>		
+					<?php
+						}
+					?>
 				
 				<div class="category-tab"><!--category-tab-->
+					<?php 
+						if(sizeof($brands) != 0){
+					?>
+						<div class="col-sm-12">
+							<ul class="nav nav-tabs">
+							<?php 
+								foreach($brands as $fila):
+							?>
+								<li><a href="#<?=$fila->idmarca?>" data-toggle="tab"><?=$fila->nombre?></a></li>
+							<?php
+				            	endforeach;
+				            ?>
+				            </ul> 
+			            </div>
+					<?php 
+						}
+					?> 
 					<div class="col-sm-12">
 						<ul class="nav nav-tabs">
 							<li class="active"><a href="#tshirt" data-toggle="tab">T-Shirt</a></li>
