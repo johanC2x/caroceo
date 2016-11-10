@@ -64,7 +64,7 @@
 							<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 							<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 							<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-							<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+                                                        <li><a href="#" onclick="login();"><i class="fa fa-lock"></i> Login</a></li>
 						</ul>
 					</div>
 				</div>
@@ -789,3 +789,59 @@
 </section>
 <!-- FALTA PIE DE PAGINA -->
 <?php $this->load->view("partial/footer"); ?>
+
+<!-- Modal -->
+<div id="myModalLogin" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Sé parte de nuestra comunidad y podrás interactuar con nuestro portal, participar de nuestras promociones y sorteos.</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" id="formusuario" name="formusuario">
+                    <div class="form-group">
+                        <label for="ejemplo_email_3" class="col-lg-4 control-label">Nombres: </label>
+                        <div class="col-lg-7">
+                            <input type="text" class="form-control" id="NomCompUsu" maxlength='50' name="NomCompUsu" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ejemplo_email_3" class="col-lg-4 control-label">Apellidos: </label>
+                        <div class="col-lg-7">
+                            <input type="text" class="form-control" id="ApellidosUsu" maxlength='50' name="ApellidosUsu" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ejemplo_email_3" class="col-lg-4 control-label">DNI: </label>
+                        <div class="col-lg-7">
+                            <input type="text" class="form-control" maxlength='8' id="DniUsu" name="DniUsu" onkeypress="return validarNumeros(event)" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ejemplo_email_3" class="col-lg-4 control-label">Correo: </label>
+                        <div class="col-lg-7">
+                            <input type="text" class="form-control" maxlength='40' id="CorreoUsu" name="CorreoUsu" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ejemplo_email_3" class="col-lg-4 control-label">Contraseña: </label>
+                        <div class="col-lg-7">
+                            <input type="password" class="form-control" maxlength='10' id="PassUsu" name="PassUsu" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label><input type="checkbox" id="SuscribirmeUsu" name="SuscribirmeUsu" />Deseo suscribirme al newsletter</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer text-center">
+                <button type="button" onclick="registrar_usuario();" class="btn btn-sm btn-warning">Registrarme</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin Modal -->
