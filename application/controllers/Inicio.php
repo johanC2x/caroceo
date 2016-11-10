@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Inicio extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
@@ -18,6 +18,6 @@ class Welcome extends CI_Controller {
         $data = array('titulo' => 'Crud en codeigniter',
                       'products' => $this->product->get_products(),
                       'brands' => $this->brand->get_brands());
-        $this->load->view('welcome',$data);
+        $this->load->view('index',$data);
     }
 }
