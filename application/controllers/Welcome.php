@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
+	
 	public function __construct(){
 		parent::__construct();
 		//cargamos la base de datos por defecto
@@ -12,7 +13,7 @@ class Welcome extends CI_Controller {
 		$this->load->model('product');
 		$this->load->model('brand');
 	}
-
+ 
 	public function index(){
 		$data = array('titulo' => 'Crud en codeigniter',
 					  'products' => $this->product->get_products(),
