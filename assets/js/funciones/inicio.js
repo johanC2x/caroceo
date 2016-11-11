@@ -4,18 +4,18 @@ var host = window.location.host;
 var pathArray = window.location.pathname.split( '/' );
 
 function login_modal(){
-    $("#myModalLogin").modal("show");
     limpiar();
+    $("#myModalLogin").modal("show");
 }
 
 function limpiar(){
     $('#usuario').val('');
     $('#passw').val('');
 }
+
 function validar_login(){
     var usuario = $('#usuario').val();
     var passw = $('#passw').val();
-    var url = base_url + '/' + pathArray[1] + '/index.php/inicio/json/validausu';
     if(usuario === ''){
         alertas('INFO','ATENCIÓN','Debe ingresar el usuario.');
         return false;
@@ -24,4 +24,12 @@ function validar_login(){
         alertas('INFO','ATENCIÓN','Debe ingresar su contraseña.');
         return false;
     }
+}
+
+function modal_registro(){
+    alert('hola');
+}
+
+function limpiar_modal_registro(){
+    
 }
