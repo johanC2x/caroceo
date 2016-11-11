@@ -16,7 +16,8 @@ class Welcome extends CI_Controller {
 	public function index(){
 		$data = array('titulo' => 'Crud en codeigniter',
 					  'products' => $this->product->get_products(),
-					  'brands' => $this->brand->get_brands());
+					  'brands' => $this->brand->get_brands(),
+					  'productsOut' => $this->product->get_products_out_limit());
 		$this->load->view('welcome',$data);
 	}
 
