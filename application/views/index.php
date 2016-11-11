@@ -770,8 +770,9 @@
                             <input type="password" class="form-control" id="passw" placeholder="Ingrese su contraseña" name="passw" maxlength='30' />
                         </div>
                     </div>
-                    <div id="mensaje"></div>
-                    <input class="btn btn-sm btn-primary btn-block btn-signin" type="submit" value="INICIAR SESÍON"/><br/>
+                    <input class="btn btn-sm btn-primary btn-block btn-signin" type="submit" value="LOGIN"/><br/>
+                    <a href="#" class="pull-right need-help">¿Olvide mi contraseña? </a><span class="clearfix"></span>
+                    <a href="#" onclick="modal_registro();" class="pull-right need-help">Crear cuenta </a><span class="clearfix"></span>
                 </form>
             </div>
         </div>
