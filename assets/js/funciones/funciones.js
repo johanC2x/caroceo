@@ -1,3 +1,7 @@
+//VARIABLES LOCALES
+var path = "http://localhost/oceo2/index.php/";
+var preloader = "<left><img src='../../../../assets/img/loading.gif'/></left>";
+
 /*ALERTAS UTILIZANDO BOOTSTRAP*/
 function alertas(TipoAlerta,Titulo,Mensaje){
     switch (TipoAlerta){
@@ -36,5 +40,29 @@ function alertas(TipoAlerta,Titulo,Mensaje){
             }
         }]
     });
+}
+
+//MENSAJES DE BOOSTRAP
+function obtenerAlert(msg) {
+    var alert = "";
+    alert += '<div class="alert alert-info">';
+    alert += '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' + msg;
+    alert += '</div>';
+    return alert;
+}
+
+function resetear(objForm){
+    $('#'+objForm)[0].reset();
+}
+
+
+function validarForm(objform){
+    res = 0;
+    $(".validate"+objform).each(function() {
+        if($(this).val() == ''){
+            res = 1;
+        }
+    }); 
+    return res;
 }
 

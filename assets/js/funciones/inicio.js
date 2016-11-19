@@ -27,7 +27,7 @@ function validar_login(){
 }
 
 function modal_registro(){
-    alert('hola');
+    alert('hola'); 
 }
 
 function limpiar_modal_registro(){

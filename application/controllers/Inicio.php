@@ -10,9 +10,10 @@ class Inicio extends CI_Controller {
         //cargamos el helper url y el helper form
         $this->load->helper(array('url','form'));
         //cargamos el modelo crud_model
-        $this->load->model('product');
+        $this->load->model('product'); 
         $this->load->model('brand');
         $this->load->model('usuario');
+        $this->load->model('publish');
     }
 
     public function index(){
@@ -47,13 +48,19 @@ class Inicio extends CI_Controller {
         }
     }
     
-    public function perfil(){
+    public function perfil(){ 
         $data = array();
         $data['login'] = 'No';
         if($this->session->userdata('logged_in')){
             $data['login'] = 'Si';
             $session_data = $this->session->userdata('logged_in');
             $data['nombre'] = $session_data['nombre'];
+            $data['idusuario'] = $session_data['idusuario'];
+            $data['post'] = $this->product->get_post_car_user($data['idusuario']);
+            //CAMBIO DE SESION=================================
+            $_SESSION['nombre'] = $session_data['nombre'];
+            $_SESSION['idusuario'] = $session_data['idusuario'];
+            //=================================================
             $this->load->view('perfil',$data);
         }else{
             redirect('/inicio/index');

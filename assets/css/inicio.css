@@ -9,3 +9,11 @@
     text-align: right;
 }
 
+.table-notborder{
+	border-style: none;
+}
+
+.color-red{
+	color: red;
+}
+
