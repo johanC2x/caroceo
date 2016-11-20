@@ -14,6 +14,7 @@ class Inicio extends CI_Controller {
         $this->load->model('brand');
         $this->load->model('usuario');
         $this->load->model('publish');
+        $this->load->model('persona');
     }
 
     public function index(){
@@ -72,5 +73,46 @@ class Inicio extends CI_Controller {
         $this->session->unset_userdata('logged_in');
         session_destroy();
         redirect('/inicio/index');
+    }
+
+    public function json(){
+        $this->url_elements = explode('/', $_SERVER['PATH_INFO']);
+        $case = $this->url_elements[3];
+        $domain = explode('/', $_SERVER['HTTP_REFERER']);
+        $urlContorlador = $domain[0].'//'.$domain[2].'/'.$domain[3].'/assets/imagenes/';
+        switch ($case):
+            case 'registro':
+                $data['respuesta'] = $this->usuario->registrousuario($_POST);
+                break;
+            case 'recuperarpass':
+                $existeCorreo = $this->persona->existeCorreo($_POST['CorreoUsu']);
+                $datos = count($existeCorreo);
+                if($datos > 0){
+                    $data['respuesta'] = $this->envioCorreo($_POST['CorreoUsu'],$existeCorreo[0]['usuario']);
+                }else{
+                    $data['respuesta'] = 'correoNoExiste';
+                }
+                break;
+        endswitch;
+        echo json_encode(array('msj'=>$data['respuesta']));
+    }
+    
+    public function envioCorreo($correo,$usuario){
+        $password = $this->generateRandomString();
+        $actualizarpass = $this->usuario->updatepass($usuario,$password);
+        $email_body= "<b>Se actualizo su contraseña:</b><br/>";
+        $email_body.= "<b>Usuario:</b> $usuario<br/>";
+        $email_body.= "<b>Contraseña: </b>$password <br/>";
+        $titulo = "Restauración de contraseña";
+        $headers = "MIME-Version: 1.0\r\n"; 
+        $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
+        $headers .= "From: Descubre Autos <renato.mpisconte@gmail.com.com>\r\n";
+        $to = $correo;
+        $bool = mail($to,$titulo,$email_body,$headers);
+        return 'Si';
+    }
+
+    public function generateRandomString($length = 10) { 
+        return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length); 
     }
 }
