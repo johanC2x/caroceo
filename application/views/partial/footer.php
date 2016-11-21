@@ -14,7 +14,7 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="<?php echo base_url();?>assets/img/iframe1.png" alt="" />
+                                    <img src="<?php echo base_url();?>assets/img/home/iframe1.png" alt="" />
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -29,7 +29,7 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="<?php echo base_url();?>assets/img/iframe2.png" alt="" />
+                                    <img src="<?php echo base_url();?>assets/img/home/iframe2.png" alt="" />
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -44,7 +44,7 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="<?php echo base_url();?>assets/img/iframe3.png" alt="" />
+                                    <img src="<?php echo base_url();?>assets/img/home/iframe3.png" alt="" />
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -59,7 +59,7 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="<?php echo base_url();?>assets/img/iframe4.png" alt="" />
+                                    <img src="<?php echo base_url();?>assets/img/home/iframe4.png" alt="" />
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="address">
-                        <img src="<?php echo base_url();?>assets/img/map.png" alt="" />
+                        <img src="<?php echo base_url();?>assets/img/home/map.png" alt="" />
                         <p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
                     </div>
                 </div>
@@ -95,15 +95,13 @@
 <script src="<?php echo base_url();?>assets/js/jquery.scrollUp.min.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
 <script src="<?php echo base_url();?>assets/js/price-range.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
 <script src="<?php echo base_url();?>assets/js/fileinput.min.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
-<script src="<?php echo base_url();?>assets/js/funciones/inicio.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
 <script src="<?php echo base_url();?>assets/js/funciones/funciones.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
-<script src="<?php echo base_url();?>assets/js/funciones/post.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
+<script src="<?php echo base_url();?>assets/js/funciones/<?php echo $nomfuncion;?>" type="text/javascript" language="javascript" charset="UTF-8"></script>
 <script src="<?php echo base_url();?>assets/validator/js/bootstrapValidator.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.9/js/bootstrap-dialog.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
     var alerta = '<?php echo $alerta;?>';
-    console.log(alerta);
     if(alerta === 'Si'){
         $("#myModalLogin").modal("show");
         $('#usuario').val('<?php echo $usuario; ?>');

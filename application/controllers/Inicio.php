@@ -25,6 +25,7 @@ class Inicio extends CI_Controller {
         $data['alerta'] = 'No';
         $data['usuario'] = '';
         $data['passw'] = '';
+        $data['nomfuncion'] = 'inicio.js';
         if(!empty($_POST)){
             $datos = $this->usuario->login($_POST);
             $resultado = ((count($datos)>0)?'S':'N');

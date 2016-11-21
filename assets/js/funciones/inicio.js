@@ -115,6 +115,7 @@ function enviar_data(){
         data: $('#frmregistro').serialize(),
         beforeSend:cargando,
         success: function(result){
+            $("#mensaje").html('');
             if(result.msj ==='Si'){
                 $('#mensaje').html('<p class="text-success close letra2"><b>!Proceso realizado correctamente!</b></p>');
                 limpiar_form_registro();
@@ -177,7 +178,7 @@ function enviar_pass(){
     $.ajax({
         url: url,
         type: "POST",
-	dataType: "JSON",
+	    dataType: "JSON",
         data: {CorreoUsu:CorreoUsu},
         beforeSend:cargando,
         success:function(result){
