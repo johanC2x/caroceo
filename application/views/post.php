@@ -13,6 +13,10 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in">
                     <div class="panel-body">
+                    	<form>
+                    		<input type="text" id="nroDoc" name="nroDoc" >
+                    		<input type="button" value="validar" onclick="OceoService()">
+                    	</form>
                     	<form id="frmPost" role="form" >
 							<div id="form-group">
 								<table class="table">

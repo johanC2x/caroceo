@@ -88,7 +88,22 @@ function publicarComentario(objForm){
 				}
 			}
 		});
-		
 	}
+}
+
+function OceoService(){
+	var op = 1;
+	var nroDoc = $("#nroDoc").val();
+	$.ajax({
+		url: '../../../../oceoService/ServiceController.php',
+		type: 'POST',
+		data: {
+			op: op,
+			nroDoc:nroDoc
+		},
+		success:function(msg){
+			console.log(msg);
+		}
+	});
 }
 
