@@ -1,6 +1,12 @@
 //VARIABLES LOCALES
+//NOCE PONE EN DURO HIJO MIO :D JAJA
 var path = "http://localhost/oceo2/index.php/";
 var preloader = "<left><img src='../../../../assets/img/loading.gif'/></left>";
+//UTILIZA MEJOR ESTO
+//variables globales
+var base_url = window.location.origin;
+var host = window.location.host;
+var pathArray = window.location.pathname.split( '/' );
 
 /*ALERTAS UTILIZANDO BOOTSTRAP*/
 function alertas(TipoAlerta,Titulo,Mensaje){
@@ -64,5 +70,21 @@ function validarForm(objform){
         }
     }); 
     return res;
+}
+
+function validarNumeros(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+
+function cargando(){
+    var rutaimg = base_url + '/' + pathArray[1] + '/assets/img/cargando_mini.gif"';
+    $("#mensaje").html('<img src="'+rutaimg+'">');
+}
+
+function problemas(){
+    $("#mensaje").html('<p class="text-danger letra2"><b>Problemas en el servidor.Presione F5 para refrescar la página.</b></p>');
 }
 

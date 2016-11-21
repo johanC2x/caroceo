@@ -23,10 +23,36 @@ class Usuario extends CI_Model{
         return $data;
     }
 
-    public function cerrarsession(){
-        $this->load->helper('url');
-        $this->session->unset_userdata('logged_in');
-        session_destroy();
-        redirect('/inicio/index');
+    public function registrousuario($data){
+        try{
+            if(isset($data['terminos'])){
+                $data['terminos'] = 1;
+            }else{
+                $data['terminos'] = 2;
+            }
+            $datausuario = array('usuario' => 'DA'.$data['nrodoc'], 'passw' => $data['passw'],
+                'estado' => 'A', 'terminos' => $data['terminos'], 'idtipousuario' => 'U'
+                );
+            $datapersona = array('nombres' => $data['nombres'], 'apellidos' => $data['apellidos']
+                , 'nomcomp' => $data['nombres'].' '.$data['apellidos'],'sexo' => $data['sexo']
+                , 'fecnac' => $data['ano'].'-'.$data['mes'].'-'.$data['dia'],'nrodoc' => $data['nrodoc']
+                , 'email' => $data['email'], 'usuario' => 'DA'.$data['nrodoc']);
+            $this->db->insert($this->table , $datausuario);
+            $this->db->insert('persona' , $datapersona);
+            return 'Si';
+        }catch (Exception $e) {
+            return 'Excepción capturada: '.  $e->getMessage(). "\n";
+        }
+    }
+    
+    public function updatepass($usuario,$password){
+        try {
+            $this->db->where('usuario', $usuario);
+            $data =array('passw'=>$password);
+            $this->db->update($this->table , $data);
+            return 'Si';
+        }catch (Exception $e) {
+            return 'Excepción capturada: '.  $e->getMessage(). "\n";
+        }
     }
 }

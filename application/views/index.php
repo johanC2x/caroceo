@@ -652,7 +652,7 @@
                         </div>
                     </div>
                     <input class="btn btn-sm btn-primary btn-block btn-signin" type="submit" value="LOGIN"/><br/>
-                    <a href="#" class="pull-right need-help">¿Olvide mi contraseña? </a><span class="clearfix"></span>
+                    <a href="#" onclick="modal_recuperar_pass();" class="pull-right need-help">¿Olvide mi contraseña? </a><span class="clearfix"></span>
                     <a href="#" onclick="modal_registro();" class="pull-right need-help">Crear cuenta </a><span class="clearfix"></span>
                 </form>
             </div>
@@ -661,6 +661,28 @@
 </div>
 <!-- Fin Modal Login -->
 
+<!-- Modal Recuperar Password -->
+<div id="myModalRecuperarPass" class="modal fade bd-example-modal-sm" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Restablece tu contraseña</h4>
+                <span class="textoaliniado">Ingresa el correo electrónico con el que te registraste.</span>
+            </div>
+            <div class="modal-body">
+                <form method="post" class="form-signin">
+                    <span id="reauth-email" class="reauth-email"></span>
+                    <input type="email" id="inputEmail1" name="inputEmail1" class="form-control" placeholder="Correo Electrínico" maxlength="50" /><br/>
+                    <input class="btn btn-sm btn-warning btn-block btn-signin" onclick="enviar_pass();" type="button" value="ENVIAR"/><br/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin Modal Recuperar Password-->
+
 <!-- Modal Registro-->
 <div id="myModalRegistro" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -668,49 +690,93 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Sé parte de nuestra comunidad y podrás interactuar con nuestro portal, participar de nuestras promociones y sorteos.</h4>
+                <h4 class="modal-title">CREA TU CUENTA EN DESCUBRE AUTOS</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" role="form" id="formusuario" name="formusuario">
-                    <div class="form-group">
-                        <label for="ejemplo_email_3" class="col-lg-4 control-label">Nombres: </label>
-                        <div class="col-lg-7">
-                            <input type="text" class="form-control" id="NomCompUsu" maxlength='50' name="NomCompUsu" />
+                <form id="frmregistro" method="post" name="frmregistro">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="mensaje"></div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="ejemplo_email_3" class="col-lg-4 control-label">Apellidos: </label>
-                        <div class="col-lg-7">
-                            <input type="text" class="form-control" id="ApellidosUsu" maxlength='50' name="ApellidosUsu" />
+                    <div class="row">
+                        <div class="col-lg-6" role="form">
+                            <div class="form-group">
+                                <label for="email" class="control-label">Nombres</label>
+                                <input type="text" class="form-control" id="nombres" maxlength="100" name="nombres" placeholder="Ingrese sus nombres" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="control-label">Apellidos</label>
+                                <input type="text" class="form-control" id="apellidos" maxlength="100" name="apellidos" placeholder="Ingrese sus apellidos" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="control-label">Email</label>
+                                <input type="text" class="form-control" id="email" maxlength="50" name="email" placeholder="Ingrese su Email" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="control-label">Contraseña</label>
+                                <input type="password" class="form-control" id="passw" maxlength="30" name="passw" placeholder="Ingrese su contraseña" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="email" class="control-label">Numero de documento</label>
+                                <input type="text" class="form-control" id="nrodoc" maxlength="10" name="nrodoc" placeholder="Ingrese su DNI" onkeypress="return validarNumeros(event)" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="control-label">Sexo</label>
+                                <select class="form-control" id="sexo" name="sexo">
+                                    <option value="">Seleccione</option>
+                                    <option value="1">Masculino</option>
+                                    <option value="2">Femenino</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="control-label">Fecha de Nacimiento:</label>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <select name="dia" id="dia" class="form-control" style="padding: 6px 5px;">
+                                            <?php
+                                            echo '<option value="" selected>Día</option>';
+                                            for ($i=1; $i<=31; $i++) {
+                                                echo '<option value="'.$i.'">'.$i.'</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <select name="mes" id="mes" class="form-control" style="padding: 6px 5px;">
+                                            <?php
+                                            echo '<option value="" selected>Mes</option>';
+                                            for ($i=1; $i<=12; $i++) {
+                                                echo '<option value="'.$i.'">'.$i.'</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <select name="ano" id="ano" class="form-control" style="padding: 6px 5px;">
+                                            <?php
+                                            echo '<option value="" selected>Año</option>';
+                                            for($i=date('o'); $i>=1910; $i--){
+                                                echo '<option value="'.$i.'">'.$i.'</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="checkbox">
+                                <label><input type="checkbox" id="terminos" name="terminos">Acepto las Políticas de privacidad, los Términos y condiciones de DescubreAutos.com</label>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="ejemplo_email_3" class="col-lg-4 control-label">DNI: </label>
-                        <div class="col-lg-7">
-                            <input type="text" class="form-control" maxlength='8' id="DniUsu" name="DniUsu" onkeypress="return validarNumeros(event)" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="ejemplo_email_3" class="col-lg-4 control-label">Correo: </label>
-                        <div class="col-lg-7">
-                            <input type="text" class="form-control" maxlength='40' id="CorreoUsu" name="CorreoUsu" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="ejemplo_email_3" class="col-lg-4 control-label">Contraseña: </label>
-                        <div class="col-lg-7">
-                            <input type="password" class="form-control" maxlength='10' id="PassUsu" name="PassUsu" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label><input type="checkbox" id="SuscribirmeUsu" name="SuscribirmeUsu" />Deseo suscribirme al newsletter</label>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <input type="submit" class="btn btn-sm btn-warning" value="Registrarme" />
                         </div>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer text-center">
-                <button type="button" onclick="registrar_usuario();" class="btn btn-sm btn-warning">Registrarme</button>
             </div>
         </div>
     </div>
