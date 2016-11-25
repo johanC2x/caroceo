@@ -68,7 +68,7 @@
                                     <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                     <li><a href="#" onclick="login_modal();"><i class="fa fa-lock"></i> Login</a></li>
                                     <?php } ?>
-                                <?php }else if(isset($_SESSION['idusuario'])){ ?>
+                                <?php } else if (isset($_SESSION['idusuario'])){ ?>
                                     <?php if($_SESSION['idusuario'] != null){ ?>
                                     <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                     <li><a href="<?= site_url('inicio/perfil') ?>"><i class="fa fa-user"></i> <?php echo $_SESSION['nombre'];?></a></li>

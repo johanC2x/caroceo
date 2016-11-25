@@ -29,8 +29,14 @@
 								height="350px">
 							</a>
 							<p><?=$fila->descripcion?></p>
-							<a  class="btn btn-primary" 
-								href="<?php echo base_url();?>index.php/post/postId/<?=$fila->idauto?>">Leer Más</a>
+							<a  class="btn btn-primary" href="<?php echo base_url();?>index.php/post/postId/<?=$fila->idauto?>">Leer Más</a>
+							<?php 
+								if($_SESSION['idusuario'] != null){
+							?>
+							<a  class="btn btn-primary" href="<?php echo base_url();?>index.php/post/index/<?=$fila->idauto?>">Editar</a>
+							<?php 
+							 	}
+							?>
 						</div>
 	            	<?php 
 	            		endforeach;

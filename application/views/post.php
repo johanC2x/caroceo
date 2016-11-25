@@ -13,19 +13,132 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in">
                     <div class="panel-body">
-                    	<form>
-                    		<input type="text" id="nroDoc" name="nroDoc" >
-                    		<input type="button" value="validar" onclick="OceoService()">
-                    	</form>
                     	<form id="frmPost" role="form" >
-							<div id="form-group">
-								<table class="table">
-									<tr>
+							<?php 
+								if(isset($post)){
+									print_r($post);
+									if(sizeof($post) != 0){  
+							?>
+								<?php foreach($post as $fila): ?>
+									<div class="form-group">
 										<label>Título <span style="color:red;">(*)</span>:</label>
 										<input type="text" id="titulo" name="titulo" class="form-control validate"/>
-									</tr>	
-									<tr> 
-										<td style="border-style: none;width: 250px;padding-right: 5px;">
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-md-6">
+												<label>Marca <span style="color:red;">(*)</span>:</label>
+												<select id="idmarca" name="idmarca" class="form-control validate">
+													<option value="0">Seleccionar</option>
+													<?php 
+														foreach($brands as $fila):
+													?>
+														<option value="<?=$fila->idmarca?>" ><?=$fila->nombre?></option>
+													<?php 
+														endforeach;
+													?>
+												</select>
+											</div>
+											<div class="col-md-6">
+												<label>Modelo</label>
+												<input type="text" id="modelo" name="modelo" class="form-control validate"/>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-md-6">
+												<label>Año</label>
+												<input type="text" id="anio" name="anio" class="form-control validate"/>
+											</div>
+											<div class="col-md-6">
+												<label>Transmisión <span style="color:red;">(*)</span>:</label>
+												<select id="idtipotransmision" name="idtipotransmision" class="form-control validate" 
+												        >
+													<option value="0">Seleccionar</option>
+													<?php 
+														foreach($codeTransmision as $fila):
+													?>
+														<option value="<?=$fila->idcodigo?>" ><?=$fila->codigo?></option>
+													<?php 
+														endforeach;
+													?>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-md-6">
+												<label>Combustible <span style="color:red;">(*)</span>:</label>
+												<select id="idtipocombustible" name="idtipocombustible" class="form-control validate" 
+														>
+													<option value="0">Seleccionar</option>
+													<?php 
+														foreach($codeCombustible as $fila):
+													?>
+														<option value="<?=$fila->idcodigo?>" ><?=$fila->codigo?></option>
+													<?php 
+														endforeach;
+													?>
+												</select>
+											</div>
+											<div class="col-md-6">
+												<label>Motor <span style="color:red;">(*)</span>:</label>
+												<input type="text" id="motor" name="motor" class="form-control validate"
+												       />
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-md-3">
+												<label>Timón <span style="color:red;">(*)</span>:</label>
+												<select id="idtipotimon" name="idtipotimon" class="form-control validate" 
+													    >
+													<option value="0">Seleccionar</option>
+													<?php 
+														foreach($codeTimon as $fila):
+													?>
+														<option value="<?=$fila->idcodigo?>" ><?=$fila->codigo?></option>
+													<?php 
+														endforeach;
+													?>
+												</select>
+											</div>
+											<div class="col-md-3">
+												<label>Num. Puertas: <span style="color:red;">(*)</span>:</label>
+												<input type="text" id="nropuertas" name="nropuertas" class="form-control validate"
+												       />
+											</div>
+											<div class="col-md-3">
+												<label>Color: <span style="color:red;">(*)</span>:</label>
+												<input type="text" id="color" name="color" class="form-control validate"
+												       />
+											</div>
+											<div class="col-md-3">
+												<label style="color:red;" >Precio: <i class="fa fa-usd" aria-hidden="true"></i></label>
+												<input type="text" id="precio" name="precio" class="form-control validate" placeholder="Ingrese un precio"
+												       />
+											</div>
+										</div>
+									</div>
+									<div id="form-group">
+										<textarea id="descripcion" name="descripcion" class="form-control validate" rows="5" 
+										placeholder="Ingrese una descripción" ></textarea>
+									</div>
+								<?php endforeach; ?>
+							<?php 
+									}
+								}else{ 
+							?>
+								<div class="form-group">
+									<label>Título <span style="color:red;">(*)</span>:</label>
+									<input type="text" id="titulo" name="titulo" class="form-control validate"/>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-6">
 											<label>Marca <span style="color:red;">(*)</span>:</label>
 											<select id="idmarca" name="idmarca" class="form-control validate" >
 												<option value="0">Seleccionar</option>
@@ -37,18 +150,20 @@
 													endforeach;
 												?>
 											</select>
-										</td>
-										<td style="width: 320px;border-style: none;" >
+										</div>
+										<div class="col-md-6">
 											<label>Modelo</label>
 											<input type="text" id="modelo" name="modelo" class="form-control validate"/>
-										</td>
-									</tr>
-									<tr>
-										<td style="border-style: none;width: 250px;padding-right: 5px;">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-6">
 											<label>Año</label>
 											<input type="text" id="anio" name="anio" class="form-control validate"/>
-										</td>
-										<td style="width: 320px;border-style: none;" >
+										</div>
+										<div class="col-md-6">
 											<label>Transmisión <span style="color:red;">(*)</span>:</label>
 											<select id="idtipotransmision" name="idtipotransmision" class="form-control validate" >
 												<option value="0">Seleccionar</option>
@@ -60,10 +175,12 @@
 													endforeach;
 												?>
 											</select>
-										</td>
-									</tr>
-									<tr>
-										<td style="border-style: none;width: 250px;padding-right: 5px;">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-6">
 											<label>Combustible <span style="color:red;">(*)</span>:</label>
 											<select id="idtipocombustible" name="idtipocombustible" class="form-control validate" >
 												<option value="0">Seleccionar</option>
@@ -75,15 +192,17 @@
 													endforeach;
 												?>
 											</select>
-										</td>
-										<td style="border-style: none;">
+										</div>
+										<div class="col-md-6">
 											<label>Motor <span style="color:red;">(*)</span>:</label>
 											<input type="text" id="motor" name="motor" class="form-control validate"/>
-										</td>
-									</tr>
-									<tr>
-										<td style="border-style: none;">
-                                            <label>Timón <span style="color:red;">(*)</span>:</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-3">
+											<label>Timón <span style="color:red;">(*)</span>:</label>
 											<select id="idtipotimon" name="idtipotimon" class="form-control validate" >
 												<option value="0">Seleccionar</option>
 												<?php 
@@ -94,33 +213,28 @@
 													endforeach;
 												?>
 											</select>
-										</td>
-										<td colspan="2" style="border-style: none;">
-											<table>
-												<tr>
-													<td style="width: 250px;padding-right: 5px;" >
-														<label>Num. Puertas: <span style="color:red;">(*)</span>:</label>
+										</div>
+										<div class="col-md-3">
+											<label>Num. Puertas: <span style="color:red;">(*)</span>:</label>
 											<input type="text" id="nropuertas" name="nropuertas" class="form-control validate"/>
-													</td>
-													<td style="width: 250px;padding-right: 5px;">
-														<label>Color: <span style="color:red;">(*)</span>:</label>
+										</div>
+										<div class="col-md-3">
+											<label>Color: <span style="color:red;">(*)</span>:</label>
 											<input type="text" id="color" name="color" class="form-control validate"/>
-													</td>
-													<td>
-                                                      <label style="color:red;" >Precio: <i class="fa fa-usd" aria-hidden="true"></i></label>
-                                                      <input type="text" id="precio" name="precio"
-                                                      class="form-control validate" placeholder="Ingrese un precio"/>
-													</td>
-												</tr>
-											</table>
-										</td>										
-									</tr>
-								</table>
-							</div>
-							<div id="form-group">
-								<textarea id="descripcion" name="descripcion" class="form-control validate" rows="5" 
-								placeholder="Ingrese una descripción"></textarea>
-							</div>	
+										</div>
+										<div class="col-md-3">
+											<label style="color:red;" >Precio: <i class="fa fa-usd" aria-hidden="true"></i></label>
+											<input type="text" id="precio" name="precio" class="form-control validate" placeholder="Ingrese un precio"/>
+										</div>
+									</div>
+								</div>
+								<div id="form-group">
+									<textarea id="descripcion" name="descripcion" class="form-control validate" rows="5" 
+									placeholder="Ingrese una descripción"></textarea>
+								</div>
+							<?php 
+								} 
+							?>
 							<br/>
 						<!--
 							<div id="form-group">

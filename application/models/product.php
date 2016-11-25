@@ -30,7 +30,7 @@
 				return $query->result();
 			}
 		} 
-
+ 
 		//OBTENER AUTO SIN LIMITE
 		public function get_products_out_limit(){
 			$this->db->order_by("idauto", "desc");			
@@ -49,8 +49,9 @@
 			$this->db->join('persona as per','u.idpersona = per.idpersona');
 			$this->db->where('au.idauto',$idauto);
 			$query = $this->db->get();
+			$data = $query->result_array();
 			if($query->num_rows() > 0){
-				return $query->result();
+				return $data;
 			}
 		}
 

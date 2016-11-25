@@ -11,17 +11,26 @@ class Post extends CI_Controller{
         $this->load->model('product');
         $this->load->model('publish');
         $this->load->model('comment');
+        $this->load->model('comment');
 	} 
 
-	public function index(){
-		$data = array('codeTimon' => $this->code->get_Code_Type('tipotimon'),
+	public function index($idauto = null){
+		if($idauto == null){
+			$data = array('codeTimon' => $this->code->get_Code_Type('tipotimon'),
                       'codeTransmision' => $this->code->get_Code_Type('tipotransmision'),
                       'codeCombustible' => $this->code->get_Code_Type('tipocombustible'),
                       'brands' => $this->brand->get_brands());
-		$data['nomfuncion'] = 'post.js';
-		$data['alerta'] = 'No';
-		$data['usuario'] = '';
-        $data['passw'] = '';
+			$data['nomfuncion'] = 'post.js';
+			$data['alerta'] = 'No';
+			$data['usuario'] = '';
+	        $data['passw'] = '';
+		}else{
+			$data = array('codeTimon' => $this->code->get_Code_Type('tipotimon'),
+                      'codeTransmision' => $this->code->get_Code_Type('tipotransmision'),
+                      'codeCombustible' => $this->code->get_Code_Type('tipocombustible'),
+                      'brands' => $this->brand->get_brands(),
+                      'post' => $this->product->get_products_id($idauto));
+		}
 		$this->load->view('post',$data);
 	}
 
