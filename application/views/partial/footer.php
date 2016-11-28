@@ -96,6 +96,7 @@
 <script src="<?php echo base_url();?>assets/js/price-range.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
 <script src="<?php echo base_url();?>assets/js/fileinput.min.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
 <script src="<?php echo base_url();?>assets/js/funciones/funciones.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
+<script src="<?php echo base_url();?>assets/js/funciones/inicio.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
 <script src="<?php echo base_url();?>assets/js/funciones/<?php echo $nomfuncion;?>" type="text/javascript" language="javascript" charset="UTF-8"></script>
 <script src="<?php echo base_url();?>assets/validator/js/bootstrapValidator.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.9/js/bootstrap-dialog.min.js"></script>

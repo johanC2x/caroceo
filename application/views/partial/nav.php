@@ -66,17 +66,11 @@
                                     <?php }else {?>
                                     <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                     <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                    <li><a href="#" onclick="login_modal();"><i class="fa fa-lock"></i> Login</a></li>
-                                    <?php } ?>
-                                <?php } else if (isset($_SESSION['idusuario'])){ ?>
-                                    <?php if($_SESSION['idusuario'] != null){ ?>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                    <li><a href="<?= site_url('inicio/perfil') ?>"><i class="fa fa-user"></i> <?php echo $_SESSION['nombre'];?></a></li>
-                                    <li><a href="<?= site_url('inicio/cerrarsession') ?>"><i class="fa fa-sign-out"></i> Cerrar Sessión</a></li>
-                                    <?php }else {?>
-                                    <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                    <li><a href="#" onclick="login_modal();"><i class="fa fa-lock"></i> Login</a></li>
+                                    <li>
+                                        <button type="button" class="btn btn-default btn-xs" style="margin-top: 8px;" onclick="login_modal();">
+                                            <span class="glyphicon glyphicon-lock"></span> Login
+                                        </button>
+                                    </li>
                                     <?php } ?>
                                 <?php } ?>
                         </ul>
@@ -100,7 +94,7 @@
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="index.html" class="active">Home</a></li>
+                            <li><a href="<?= site_url('inicio/index') ?>" class="active">Home</a></li>
                             <li> <a href="#">Vehículos Nuevos</a></li>
                             <li> <a href="#">Vehículos Usados</a></li>
                             <li> <a href="<?= site_url('post/index') ?>">Publica</a></li>

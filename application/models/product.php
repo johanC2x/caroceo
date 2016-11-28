@@ -7,7 +7,7 @@
 
 		//OBTENER AUTO-PUBLICACION POR USUARIO
 		public function get_post_car_user($user_id){
-			$this->db->select('per.nombre,per.apepat,per.apemat,per.edad,per.nrodoc,u.usuario,
+			$this->db->select('per.nombres,per.apepat,per.apemat,per.edad,per.nrodoc,u.usuario,
 							   au.idauto,au.modelo,au.placa,au.precio,au.anio,au.nropuertas,au.color,au.idusuario,
 							   au.fechaini,au.fechafin,au.estado,au.creafecha,au.descripcion,au.titulo'); 
 			$this->db->from('auto as au'); 

@@ -13,11 +13,11 @@ class Usuario extends CI_Model{
     }
 
     public function login($datos){
-        $this->db->select('usuario.idusuario,usuario.idtipousuario,persona.nombre');
+        $this->db->select('usuario.idusuario,usuario.idtipousuario,persona.nombres');
         $this->db->from($this->table);
-        $this->db->join('persona','persona.idpersona = usuario.idpersona');
-        $this->db->where('usuario', $datos['usuario']);
-        $this->db->where('passw', $datos['passw']);
+        $this->db->join('persona','persona.usuario = usuario.usuario');
+        $this->db->where('usuario.usuario', $datos['usuario']);
+        $this->db->where('usuario.passw', $datos['passw']);
         $query = $this->db->get();
         $data = $query->result_array();
         return $data;

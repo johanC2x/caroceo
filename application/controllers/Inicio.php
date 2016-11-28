@@ -5,11 +5,8 @@ class Inicio extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
-        //cargamos la base de datos por defecto
         $this->load->database('default');
-        //cargamos el helper url y el helper form
         $this->load->helper(array('url','form'));
-        //cargamos el modelo crud_model
         $this->load->model('product'); 
         $this->load->model('brand');
         $this->load->model('usuario');
@@ -37,7 +34,7 @@ class Inicio extends CI_Controller {
                 $data['login'] = 'Si';
                 $sess_array = array('idusuario' => $datos[0]['idusuario'],
                     'idtipousuario' => $datos[0]['idtipousuario'],
-                    'nombre' => $datos[0]['nombre']);
+                    'nombre' => $datos[0]['nombres']);
                 $this->session->set_userdata('logged_in', $sess_array);
                 $session_data = $this->session->userdata('logged_in');
                 $data['nombre'] = $session_data['nombre'];
@@ -59,10 +56,6 @@ class Inicio extends CI_Controller {
             $data['nombre'] = $session_data['nombre'];
             $data['idusuario'] = $session_data['idusuario'];
             $data['post'] = $this->product->get_post_car_user($data['idusuario']);
-            //CAMBIO DE SESION=================================
-            $_SESSION['nombre'] = $session_data['nombre'];
-            $_SESSION['idusuario'] = $session_data['idusuario'];
-            //=================================================
             $this->load->view('perfil',$data);
         }else{
             redirect('/inicio/index');
