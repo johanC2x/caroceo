@@ -19,7 +19,7 @@ class Usuario extends CI_Model{
         $this->db->where('usuario', $datos['usuario']);
         $this->db->where('passw', $datos['passw']);
         $query = $this->db->get();
-        $data = $query->result_array();
+        $data = $query->result_array(); 
         return $data;
     }
 

@@ -96,4 +96,42 @@ class Post extends CI_Controller{
 			var_dump($e->getMessage());
 		}	
 	}
+
+	public function update(){
+		try {
+			if($this->input->is_ajax_request()){
+				$data = array(
+					'idmarca'=>$this->input->post('idmarca'),
+					'idusuario' => $_SESSION['idusuario'],
+					'modelo'=>$this->input->post('modelo'),
+					'anio'=>$this->input->post('anio'),
+					'titulo'=>$this->input->post('titulo'),
+					'motor'=>$this->input->post('motor'),
+					'precio'=>$this->input->post('precio'),
+					'nropuertas'=>$this->input->post('nropuertas'),
+					'color'=>$this->input->post('color'),
+					'idtipotransmision'=>$this->input->post('idtipotransmision'),
+					'idtipotimon'=>$this->input->post('idtipotimon'),
+					'idtipocombustible'=>$this->input->post('idtipocombustible'),
+					'descripcion' =>$this->input->post('descripcion'),
+					'estado' =>$this->input->post('estado')
+				);
+				$this->product->updateProduct($data,$this->input->post('idauto'));
+				echo 1;
+			}
+		} catch (Exception $e) {
+			var_dump($e->getMessage());
+		}
+	}
+
+	public function obtenerPorOrdenMarca(){
+		try {
+			$idmarca = $_POST["idmarca"];
+			$data = array('product' => $this->product->get_product_order_brand($idmarca));
+			echo json_encode($data);
+		} catch (Exception $e) {
+			var_dump($e->getMessage());
+		}
+	}
+
 }

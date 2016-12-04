@@ -1,5 +1,8 @@
 var res = 0;
-function validar(){
+
+
+/* METODOS POST */
+function validar(id){
 	$(".validate").each(function() {
 		if($(this).val() == ''){
 			res = 1;
@@ -8,8 +11,12 @@ function validar(){
 	if(res == 1){
 		var resp = obtenerAlert("Existen campos requeridos!...");
 		$("#postMess").html(resp);
-	}else{		
-		insertarPost();
+	}else{	
+		if(id == null){
+			insertarPost();
+		}else{
+			editarPost(id);
+		}
 	}
 }
 
@@ -51,6 +58,26 @@ function insertarPost(){
 	}); 
 }
 
+function editarPost(id){
+	var resp = "";  
+	$.ajax({
+		url: path+'post/update',
+		type: 'POST',
+		data: $("#frmPost").serialize(), 
+		success:function(msg){
+			console.log(msg);
+			if(msg == 1){
+				resp = obtenerAlert("Operación realizada con exito...");
+				$("#postMess").html(resp);
+				location.reload();
+			}else{
+				resp = obtenerAlert("Ocurrio un error...");
+				$("#postMess").html(resp);
+			}
+		}
+	}); 
+}
+
 function obtenerPostId(idauto){
 	$.ajax({
 		url: path+'post/postId',
@@ -64,6 +91,25 @@ function obtenerPostId(idauto){
 	});
 }
 
+function obtenerEstado1(){
+	if($("#estado1").is(':checked')) { 
+		$("#estado1").prop("checked", "checked");
+		$("#estado2").attr("disabled",true);
+	}else{
+		$("#estado2").attr("disabled",false);
+	} 
+}
+
+function obtenerEstado2(){
+	if($("#estado2").is(':checked')) { 
+		$("#estado2").prop("checked", "checked");
+		$("#estado1").attr("disabled",true);
+	}else{
+		$("#estado1").attr("disabled",false);
+	} 
+}
+
+/* METODOS COMENTARIO */
 function publicarComentario(objForm){
 	res = validarForm("Comment");
 	var comentario = $("#comentario").val();
@@ -91,6 +137,7 @@ function publicarComentario(objForm){
 	}
 }
 
+/* METODOS WEB SERVICE */
 function OceoService(){
 	var op = 1;
 	var nroDoc = $("#nroDoc").val();
@@ -106,4 +153,5 @@ function OceoService(){
 		}
 	});
 }
+
 

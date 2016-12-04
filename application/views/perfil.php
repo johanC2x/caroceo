@@ -15,7 +15,11 @@
 								<ul>
 									<li><i class="fa fa-user"></i><?=$fila->usuario?></li>
 									<li><i class="fa fa-calendar"></i><?=$fila->creafecha?></li>
-								</ul>
+									<li><b><i class="fa fa-flag"
+										<?php if($fila->estado == 0){?> style="color:red;" <?php } ?>
+										<?php if($fila->estado == 1){?> style="color:green;" <?php } ?>
+										></i></b></li>
+								</ul> 
 								<span>
 										<i class="fa fa-star"></i>
 										<i class="fa fa-star"></i>
@@ -23,7 +27,7 @@
 										<i class="fa fa-star"></i>
 										<i class="fa fa-star-half-o"></i>
 								</span>
-							</div>
+							</div> 
 							<a href="">
 								<img src="<?php echo base_url();?>assets/img/app/default.png" alt=""
 								height="350px">

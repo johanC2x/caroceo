@@ -200,3 +200,40 @@ function enviar_pass(){
     });
     return false;
 }
+
+//A PRUEBA
+function obtenerPanelSlide(idObjeto){
+    var html = "";
+    $.ajax({
+        url: path+'post/obtenerPorOrdenMarca',
+        type: 'POST',
+        data: {
+            idmarca:idObjeto
+        }, 
+        success:function(msg){
+            var post = JSON.parse(msg);
+            console.log(msg.length); 
+            if(msg.length != 0){
+                console.log(msg);
+                var idmarca = 0;
+                html += '<div class="tab-pane fade active in" id="' + idObjeto + '" >';
+                for (var i = 0; i < msg.length; i++) {
+                    html += '<div class="col-sm-3">';
+                        html += '<div class="product-image-wrapper">';
+                            html += '<div class="single-products">';
+                                html += '<div class="productinfo text-center">';
+                                    html += '<img src="'+ base_url +'/oceo2/assets/img/home/gallery1.jpg" alt="" />';
+                                    html += '<h2>'+ msg[i][product].precio +'</h2>';
+                                    html += '<p>'+ msg[i].titulo +'</p>';
+                                    html += '<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>';
+                                html += '</div>';
+                            html += '</div>';
+                        html += '</div>';
+                    html += '</div>';
+                }
+                html += '</div>';
+                $("#conPost").html(html);
+            }
+        }
+    });
+}

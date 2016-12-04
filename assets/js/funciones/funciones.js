@@ -88,3 +88,11 @@ function problemas(){
     $("#mensaje").html('<p class="text-danger letra2"><b>Problemas en el servidor.Presione F5 para refrescar la página.</b></p>');
 }
 
+/* FUNCION REDIRECCIONES */
+function volver(valor){
+    switch (valor){
+        case 1: //VOLVER A PERFIL
+            window.location.href = base_url+"/oceo2/index.php/inicio/perfil";
+            break;
+    }  
+}

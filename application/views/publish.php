@@ -12,7 +12,7 @@
             				$idusuario = $fila->idusuario;
             		?>
             			<div class="single-blog-post">
-							<h3><?= $fila->titulo ?></h3>
+							<h3><b><?= $fila->titulo ?></b></h3>
 							<div class="post-meta"> 
 								<ul>
 									<li><i class="fa fa-user"></i><?=$fila->usuario?></li>
@@ -26,11 +26,47 @@
 										<i class="fa fa-star-half-o"></i>
 								</span>
 							</div>
-							<a href="">
-								<img src="<?php echo base_url();?>assets/img/app/default.png" alt=""
-								height="350px">
-							</a>
-							<p><?=$fila->descripcion?></p>
+							<div class="row">
+								<div class="col-md-8">
+									<img src="<?php echo base_url();?>assets/img/app/default.png" alt=""
+										 height="350px" class="img-thumbnail">	
+								</div>
+								<div class="col-md-4">
+									<div class="table-responsive">
+									  <table class="table table-striped table-bordered table-hover">
+									    <thead>
+									    	<tr>
+									    		<td colspan="2" ><center>DATOS</center></td>
+									    	</tr>
+									    </thead>
+									    <tbody>
+									    	<tr>
+									    		<td><b>Modelo: </b></td>
+									    		<td><?=$fila->modelo?></td>
+									    	</tr>
+									    	<tr>
+									    		<td><b>Marca: </b></td>
+									    		<td><?=$fila->nonmarca?></td>
+									    	</tr>
+									    	<tr>
+									    		<td><b>Anio: </b></td>
+									    		<td><?=$fila->anio?></td>
+									    	</tr>
+									    	<tr>
+									    		<td><b>Precio: </b></td>
+									    		<td><?=$fila->precio?></td>
+									    	</tr>
+									    </tbody>
+									  </table>
+									</div>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-12">
+									<p><?=$fila->descripcion?></p>
+								</div>
+							</div>	
 						</div>
 	            	<?php 
 	            		endforeach;
@@ -89,6 +125,8 @@
 								<textarea id="comentario" name="comentario" class="validateComment" rows="5"></textarea>
 								<a class="btn btn-primary " onclick="publicarComentario('frmComment')">
 									Publicar pregunta</a>
+								<a class="btn btn-primary " onclick="volver(1)">
+									Regresar</a>
 							</div>
 						</form>
 						<br/><br/>

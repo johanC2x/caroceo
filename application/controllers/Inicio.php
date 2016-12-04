@@ -15,7 +15,7 @@ class Inicio extends CI_Controller {
         $this->load->model('usuario');
         $this->load->model('publish');
         $this->load->model('persona');
-    }
+    } 
 
     public function index(){
         $data = array('titulo' => 'Crud en codeigniter',
@@ -50,7 +50,7 @@ class Inicio extends CI_Controller {
         }
     }
     
-    public function perfil(){ 
+    public function perfil(){  
         $data = array();
         $data['login'] = 'No';
         if($this->session->userdata('logged_in')){
