@@ -72,6 +72,10 @@
                     <div class="row">
                         <div class="col-lg-6" role="form">
                             <div class="form-group">
+                                <label for="email" class="control-label">Numero de documento</label>
+                                <input type="text" class="form-control" id="nrodoc" maxlength="8" name="nrodoc" placeholder="Ingrese su DNI" onchange="reniec(this.value);" onkeypress="return validarNumeros(event)" />
+                            </div>
+                            <div class="form-group">
                                 <label for="email" class="control-label">Nombres</label>
                                 <input type="text" class="form-control" id="nombres" maxlength="100" name="nombres" placeholder="Ingrese sus nombres" />
                             </div>
@@ -80,18 +84,14 @@
                                 <input type="text" class="form-control" id="apellidos" maxlength="100" name="apellidos" placeholder="Ingrese sus apellidos" />
                             </div>
                             <div class="form-group">
-                                <label for="email" class="control-label">Email</label>
-                                <input type="text" class="form-control" id="email" maxlength="50" name="email" placeholder="Ingrese su Email" />
-                            </div>
-                            <div class="form-group">
                                 <label for="email" class="control-label">Contraseña</label>
                                 <input type="password" class="form-control" id="passw" maxlength="30" name="passw" placeholder="Ingrese su contraseña" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="email" class="control-label">Numero de documento</label>
-                                <input type="text" class="form-control" id="nrodoc" maxlength="10" name="nrodoc" placeholder="Ingrese su DNI" onkeypress="return validarNumeros(event)" />
+                                <label for="email" class="control-label">Email</label>
+                                <input type="text" class="form-control" id="email" maxlength="50" name="email" placeholder="Ingrese su Email" />
                             </div>
                             <div class="form-group">
                                 <label for="email" class="control-label">Sexo</label>

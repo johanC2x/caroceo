@@ -1,0 +1,6 @@
+{
+    "require": {
+        "tecactus/reniec-php": "^1.0",
+        "guzzlehttp/guzzle": "^6.2"
+    }
+}

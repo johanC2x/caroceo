@@ -13,22 +13,22 @@ function registrar_usuario(){
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            nombres: {
-                feedbackIcons: 'false',
-                validators: {
-                    notEmpty: {
-                        message: 'Debe ingresar los nombres.'
-                    }
-                }
-            },
-            apellidos: {
-                feedbackIcons: 'false',
-                validators: {
-                    notEmpty: {
-                        message: 'Debe ingresar los apellidos.'
-                    }
-                }
-            },
+//            nombres: {
+//                feedbackIcons: 'false',
+//                validators: {
+//                    notEmpty: {
+//                        message: 'Debe ingresar los nombres.'
+//                    }
+//                }
+//            },
+//            apellidos: {
+//                feedbackIcons: 'false',
+//                validators: {
+//                    notEmpty: {
+//                        message: 'Debe ingresar los apellidos.'
+//                    }
+//                }
+//            },
             nrodoc: {
                 feedbackIcons: 'false',
                 validators: {
@@ -36,59 +36,59 @@ function registrar_usuario(){
                         message: 'Debe ingresar su numero de documento.'
                     }
                 }
-            },
-            passw: {
-                feedbackIcons: 'false',
-                validators: {
-                    notEmpty: {
-                        message: 'Debe ingresar un contraseña.'
-                    }
-                }
-            },
-            sexo: {
-                feedbackIcons: 'false',
-                validators: {
-                    notEmpty: {
-                        message: 'Debe seleccionar un sexo.'
-                    }
-                }
-            },
-            dia: {
-
-                feedbackIcons: 'false',
-                validators: {
-                    notEmpty: {
-                        message: 'Debe ingresar el diá de nacimiento.'
-                    }
-                }
-            },
-            mes: {
-                feedbackIcons: 'false',
-                validators: {
-                    notEmpty: {
-                        message: 'Debe ingresar el mes de nacimiento.'
-                    }
-                }
-            },
-            ano: {
-                feedbackIcons: 'false',
-                validators: {
-                    notEmpty: {
-                        message: 'Debe ingresar el año de nacimiento.'
-                    }
-                }
-            },
-            email: {
-                feedbackIcons: 'false',
-                validators: {
-                    notEmpty: {
-                        message: 'Debe ingresar su Email.'
-                    },
-                    emailAddress: {
-                        message: 'Debe ingresar un Email valido.'
-                    }
-                }
             }
+//            passw: {
+//                feedbackIcons: 'false',
+//                validators: {
+//                    notEmpty: {
+//                        message: 'Debe ingresar un contraseña.'
+//                    }
+//                }
+//            },
+//            sexo: {
+//                feedbackIcons: 'false',
+//                validators: {
+//                    notEmpty: {
+//                        message: 'Debe seleccionar un sexo.'
+//                    }
+//                }
+//            },
+//            dia: {
+//
+//                feedbackIcons: 'false',
+//                validators: {
+//                    notEmpty: {
+//                        message: 'Debe ingresar el diá de nacimiento.'
+//                    }
+//                }
+//            },
+//            mes: {
+//                feedbackIcons: 'false',
+//                validators: {
+//                    notEmpty: {
+//                        message: 'Debe ingresar el mes de nacimiento.'
+//                    }
+//                }
+//            },
+//            ano: {
+//                feedbackIcons: 'false',
+//                validators: {
+//                    notEmpty: {
+//                        message: 'Debe ingresar el año de nacimiento.'
+//                    }
+//                }
+//            },
+//            email: {
+//                feedbackIcons: 'false',
+//                validators: {
+//                    notEmpty: {
+//                        message: 'Debe ingresar su Email.'
+//                    },
+//                    emailAddress: {
+//                        message: 'Debe ingresar un Email valido.'
+//                    }
+//                }
+//            }
         }
     })
     .on('success.form.bv', function(e) {
@@ -189,6 +189,26 @@ function enviar_pass(){
                     alertas('ERROR','ATENCIÓN',result.msj);
                     break;        
             }
+        },
+        timeout:40000,
+        error: problemas
+    });
+    return false;
+}
+
+function reniec(dni){
+    var url = base_url + '/' + pathArray[1] + '/index.php/inicio/json/datadni';
+    var ctn = dni.length;
+    $.ajax({
+        url: url,
+        type: "POST",
+        dataType: "JSON",
+        data: {dni:dni},
+        beforeSend:cargando,
+        success:function(data){
+            $('#nombres').val(data.nombres);
+            $('#apellidos').val(data.apellido_paterno+' '+data.apellido_materno);
+            $('#mensaje').html('');
         },
         timeout:40000,
         error: problemas

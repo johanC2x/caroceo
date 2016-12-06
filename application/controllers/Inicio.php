@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once(APPPATH."views/reniec/vendor/autoload.php"); 
 
 class Inicio extends CI_Controller {
 
@@ -74,6 +75,7 @@ class Inicio extends CI_Controller {
         $case = $this->url_elements[3];
         $domain = explode('/', $_SERVER['HTTP_REFERER']);
         $urlContorlador = $domain[0].'//'.$domain[2].'/'.$domain[3].'/assets/imagenes/';
+        $flag = '1';
         switch ($case):
             case 'registro':
                 $data['respuesta'] = $this->usuario->registrousuario($_POST);
@@ -87,8 +89,17 @@ class Inicio extends CI_Controller {
                     $data['respuesta'] = 'correoNoExiste';
                 }
                 break;
+            case 'datadni':
+                $flag = '2';
+                $reniecDni = new Tecactus\Reniec\DNI('eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjA5ZDIwYzg3N2NmMzJjYjNjMTEzODIwNTU1YWQ1MmMwNmQzZWUwNzUxYTVkNWFjZTEzYmIwOGFjMDI1OWI3MGY2YmY5ZDNlZDg3YjM2ZGE1In0.eyJhdWQiOiIxIiwianRpIjoiMDlkMjBjODc3Y2YzMmNiM2MxMTM4MjA1NTVhZDUyYzA2ZDNlZTA3NTFhNWQ1YWNlMTNiYjA4YWMwMjU5YjcwZjZiZjlkM2VkODdiMzZkYTUiLCJpYXQiOjE0Nzk3NTAyNDksIm5iZiI6MTQ3OTc1MDI0OSwiZXhwIjo0NjM1NDIzODQ5LCJzdWIiOiI0NCIsInNjb3BlcyI6WyJ1c2UtcmVuaWVjIl19.YeAnxbgz3ZEh220kWInHEDHY8bdxeAahwMs5KKe4oN8LGW8Q6gG3cY0RqFU7GFVdgX5HPqUUzA90dSM-ZF_MrgpJLl10VkZtx_E_zxS6kXVC74oZ6o51NjFSaSz9g2FyVtMFR6ViJ-SuxUwxETkB2FDIghQGrEMjHIZO-RLl5VB59rjNKi_HunV0gdmBI4Ym2YmzV3cjx3tncBFHkhxfJOtZzraoz3MqNFrtxmIJLCgc72oyjfWrK8qHKnDzbA7ea3DpRo_JRgutLefA5IpOBk1t0wleTH4zZmcrrEzi0MJANeLEg1sUNHOB1AyqiHzbmo091_j8LHzERBDzpwYYPnny5csCNy3k9gH68dz99BgVZ5RsOayH0Cj-1lgxOJddeFeStKqd9ZmmmcNUchxGjvx7-HCKu5LdxrIiysdRFUP51rKFs5AYuE0jTv6Z93-GqJTxwB04GIAl9fkSSOzbKRr4p0-WqJpcbLhcislccxkS721tPN6ihSfLLA_xA7CmJKCDwHUO3xUooHceKXeJC6GGxE5KCu4jyiIWtwFpGl1YyKiyW5BNY-fIXnQEYGlMKv3d83z9hmSPQJ81J7OWFTc0xHgZKjUrH_uULQ4ZreW26zfbzRVgjP6diVTxAP6yE0KUZNmSBlybGIPt49iOYNt99l01dGERCPqObYCYB54');
+                $datos = $reniecDni->get($_POST['dni']);
+                //https://cel.reniec.gob.pe/celweb/
         endswitch;
-        echo json_encode(array('msj'=>$data['respuesta']));
+        if($flag == '1'){
+            echo json_encode(array('msj'=>$data['respuesta']));
+        }else{
+            echo json_encode($datos);
+        }
     }
     
     public function envioCorreo($correo,$usuario){
@@ -108,5 +119,4 @@ class Inicio extends CI_Controller {
 
     public function generateRandomString($length = 10) { 
         return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length); 
-    }
-}
+    }}
