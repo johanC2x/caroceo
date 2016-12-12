@@ -15,7 +15,7 @@
                     <div class="panel-body">
                     	<form id="frmPost" role="form" name="frmPost" >
 							<?php 
-								$id = null;
+								$id = null; 
 								if(isset($post)){
 									if(sizeof($post) != 0){  
 							?>

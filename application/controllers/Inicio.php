@@ -50,7 +50,7 @@ class Inicio extends CI_Controller {
         }
     }
     
-    public function perfil(){  
+    public function perfil(){ 
         $data = array();
         $data['login'] = 'No';
         if($this->session->userdata('logged_in')){
@@ -59,6 +59,8 @@ class Inicio extends CI_Controller {
             $data['nombre'] = $session_data['nombre'];
             $data['idusuario'] = $session_data['idusuario'];
             $data['post'] = $this->product->get_post_car_user($data['idusuario']);
+            $data['postCount'] = $this->product->get_count_product($data['idusuario']);
+
             //CAMBIO DE SESION=================================
             $_SESSION['nombre'] = $session_data['nombre'];
             $_SESSION['idusuario'] = $session_data['idusuario'];
@@ -116,4 +118,11 @@ class Inicio extends CI_Controller {
     public function generateRandomString($length = 10) { 
         return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length); 
     }
+
+
+    /* RESUMEN DE USUARIO */
+    public function resumen(){
+        
+    }
+
 }

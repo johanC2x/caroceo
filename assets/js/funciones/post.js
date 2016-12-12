@@ -22,6 +22,7 @@ function validar(id){
 
 function insertarPost(){
 	var resp = "";
+	frmFileInput
 	var inputFileImage = document.getElementById("file");
 	var file = inputFileImage.files[0];
 	var data = new FormData();
@@ -109,6 +110,12 @@ function obtenerEstado2(){
 	} 
 }
 
+function buscarVehiculo(){
+    var url = base_url + '/' + pathArray[1] + '/index.php/post/filtrarAuto/';
+    $("#frmFiltroAuto").submit();
+    location.href = url;
+}
+
 /* METODOS COMENTARIO */
 function publicarComentario(objForm){
 	res = validarForm("Comment");
@@ -137,6 +144,24 @@ function publicarComentario(objForm){
 	}
 }
 
+function insertarCommentPadre(idcomentario,idauto){
+	var comentario = $("#txtaresComment").val();
+	$.ajax({
+		url: path+'post/insertResComment',
+		type: 'POST',
+		data:{
+			idcomentario:idcomentario,
+			txtaresComment:comentario,
+			idauto:idauto
+		},
+		success:function(msg){
+			console.log(msg);
+		}
+	});
+} 
+
+/* END */
+
 /* METODOS WEB SERVICE */
 function OceoService(){
 	var op = 1;
@@ -152,6 +177,31 @@ function OceoService(){
 			console.log(msg);
 		}
 	});
+}
+
+function subirFile(idUsuario,idAuto) {
+	var ruta = base_url + '/' + pathArray[1] + '/index.php/post/subirFile';
+	var file = document.getElementById("file");
+	var data = new FormData();
+	data.append('file',file);
+	data.append('idusuario',idUsuario);
+	data.append('idauto',idAuto);
+	$.ajax({
+	    type:'POST',
+	    data:data, 
+	    url: ruta,
+	    contentType:false,
+	    processData:false,
+	    cache:false,
+	    success:function(msg){
+	       console.log(msg);
+	    }
+	}); 
+}
+
+function obtenerModalFile(idauto){
+	$("#idauto").val(idauto);
+	console.log($("#idauto").val());
 }
 
 

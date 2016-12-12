@@ -14,35 +14,32 @@
                 <div class="carousel-inner">
                     <div class="item active">
                         <div class="col-sm-6">
-                            <h1><span>E</span>-SHOPPER</h1>
-                            <h2>Free E-Commerce Template</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> 
+                            <h1><span>D</span>-SCUBREAUTOS</h1>
+                            <h4><span style="color:red;">O</span>-CEO</h4>
                         </div>
                         <div class="col-sm-6">
-                            <img src="<?php echo base_url();?>assets/img/home/girl1.jpg" class="girl img-responsive" alt="" />
-                            <img src="<?php echo base_url();?>assets/img/home/pricing.png"  class="pricing" alt="" />
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="col-sm-6">
-                            <h1><span>E</span>-SHOPPER</h1>
-                            <h2>100% Responsive Design</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> 
-                        </div>
-                        <div class="col-sm-6">
-                            <img src="<?php echo base_url();?>assets/img/home/girl2.jpg" class="girl img-responsive" alt="" />
-                            <img src="<?php echo base_url();?>assets/img/home/pricing.png"  class="pricing" alt="" />
+                            <img src="<?php echo base_url();?>assets/img/app/oceo_banner_4.jpg" class="girl img-responsive" alt="#" style="height: 350px;" />
+                            <!--<img src="<?php echo base_url();?>assets/img/home/pricing.png"  class="pricing" alt="" />-->
                         </div>
                     </div>
                     <div class="item">
                         <div class="col-sm-6">
-                            <h1><span>E</span>-SHOPPER</h1>
-                            <h2>Free Ecommerce Template</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> 
+                            <h1><span>D</span>-SCUBREAUTOS</h1>
+                            <h4><span style="color:red;">O</span>-CEO</h4>
                         </div>
                         <div class="col-sm-6">
-                            <img src="<?php echo base_url();?>assets/img/home/girl3.jpg" class="girl img-responsive" alt="" />
-                            <img src="<?php echo base_url();?>assets/img/home/pricing.png" class="pricing" alt="" />
+                            <img src="<?php echo base_url();?>assets/img/app/oceo_banner_1.jpg" class="girl img-responsive" alt="#" style="height: 350px;" />
+                            <!--<img src="<?php echo base_url();?>assets/img/home/pricing.png"  class="pricing" alt="" />-->
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="col-sm-6">
+                            <h1><span>D</span>-SCUBREAUTOS</h1>
+                            <h4><span style="color:red;">O</span>-CEO</h4>
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="<?php echo base_url();?>assets/img/app/oceo_banner_3.jpg" class="girl img-responsive" alt="#" style="height: 350px;" />
+                            <!--<img src="<?php echo base_url();?>assets/img/home/pricing.png" class="pricing" alt="" />-->
                         </div>
                     </div>
                 </div>	
@@ -64,118 +61,32 @@
 	<div class="row">
             <div class="col-sm-3">
 		<div class="left-sidebar">
-                    <h2>Category</h2>
-                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
-			<div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                        Sportswear
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="sportswear" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <ul>
-                                        <li><a href="#">Nike </a></li>
-                                        <li><a href="#">Under Armour </a></li>
-                                        <li><a href="#">Adidas </a></li>
-                                        <li><a href="#">Puma</a></li>
-                                        <li><a href="#">ASICS </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-			</div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian" href="#mens">
-                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                        Mens
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="mens" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <ul>
-                                        <li><a href="#">Fendi</a></li>
-                                        <li><a href="#">Guess</a></li>
-                                        <li><a href="#">Valentino</a></li>
-                                        <li><a href="#">Dior</a></li>
-                                        <li><a href="#">Versace</a></li>
-                                        <li><a href="#">Armani</a></li>
-                                        <li><a href="#">Prada</a></li>
-                                        <li><a href="#">Dolce and Gabbana</a></li>
-                                        <li><a href="#">Chanel</a></li>
-                                        <li><a href="#">Gucci</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>		
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian" href="#womens">
-                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                        Womens
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="womens" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <ul>
-                                        <li><a href="#">Fendi</a></li>
-                                        <li><a href="#">Guess</a></li>
-                                        <li><a href="#">Valentino</a></li>
-                                        <li><a href="#">Dior</a></li>
-                                        <li><a href="#">Versace</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Kids</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Fashion</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Households</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Interiors</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Clothing</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Bags</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Shoes</a></h4>
-                            </div>
-                        </div>
-                    </div><!--/category-products-->
+                    <h2>Año</h2>
+			        <div class="input-group">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" data-value="decrease" data-target="#spinner" data-toggle="spinner">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                        </span>
+                        <form id="frmSpinnerAnio" method="POST" action="<?php echo base_url();?>index.php/post/filtrarPorAnio" >
+                            <input type="text" data-ride="spinner" id="spinnerAnio" class="form-control input-number" value="<?php echo date("Y");; ?>">
+                        </form>                        
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" data-value="increase" data-target="#spinner" data-toggle="spinner">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>                        
+                    </div> 
+                    <center>
+                        <input type="button" value="Buscar" class="btn btn-primary" onclick="filtrarPorAnio()" >
+                    </center>
+                    <br/><br/>
                     <div class="brands_products"><!--brands_products-->
-                        <h2>Marcas</h2>
+                        <h2>Marcas</h2> 
                         <div class="brands-name">
                             <ul class="nav nav-pills nav-stacked">
                                 <?php foreach($brands as $fila): ?>
-                                <li><a href="#<?=$fila->idmarca?>"><span class="pull-right">(0)</span><?=$fila->nombre?></a></li>
+                                <li><a href="<?php echo base_url();?>index.php/post/filtrarPorMarca/<?=$fila->idmarca?>"  ><span class="pull-right">(0)</span><?=$fila->nombre?></a></li>
                                 <?php endforeach; ?>
                             </ul>
                         </div>
@@ -183,7 +94,15 @@
                     <div class="price-range"><!--price-range-->
                         <h2>Price Range</h2>
                         <div class="well text-center">
-                            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
+                            <form id="frmPrecioFiltro" role="form" method="POST" action="<?php echo base_url();?>index.php/post/filtrarPorPrecio" >
+                                <input id="txtPrecioFiltro" name="txtPrecioFiltro" type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
+                                <input type="submit" value="Buscar" class="btn btn-primary" >
+                            </form>
+                        <!--  
+                            <a href="#" title="Buscar" onclick="document.getElementById('frmPrecioFiltro').submit()" >
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </a>
+                        -->
                             <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
                         </div>
                     </div><!--/price-range-->
@@ -206,15 +125,24 @@
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
-                                <img src="<?php echo base_url();?>assets/img/home/product1.jpg" alt="" />
+                                <?php if($fila->file != ''){ ?>
+                                    <img src="<?php echo base_url();?>assets/img/app/user/<?=$fila->file?>" alt="img"  class="img-responsive"/>
+                                <?php }else{ ?>
+                                    <img src="<?php echo base_url();?>assets/img/app/default.png" alt="img"  class="img-responsive"/>
+                                <?php } ?>
+                                <!--<img src="<?php echo base_url();?>assets/img/home/product1.jpg" alt="" />-->
                                 <h2><?=$fila->precio?></h2>
                                 <p><?=$fila->modelo?></p>
+                                <a  href="<?php echo base_url();?>index.php/post/postId/<?=$fila->idauto?>" 
+                                        class="btn btn-default add-to-cart"><i class="fa fa-search"></i>Ver más</a>
                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div>
                             <div class="product-overlay">
                                 <div class="overlay-content">
                                     <h2><?=$fila->precio?></h2>
                                     <p><?=$fila->modelo?></p>
+                                    <a  href="<?php echo base_url();?>index.php/post/postId/<?=$fila->idauto?>" 
+                                        class="btn btn-default add-to-cart"><i class="fa fa-search"></i>Ver más</a>
                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                             </div>

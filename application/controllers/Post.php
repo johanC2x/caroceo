@@ -12,9 +12,9 @@ class Post extends CI_Controller{
         $this->load->model('publish');
         $this->load->model('comment');
         $this->load->model('comment');
-	} 
+	}  
 
-	public function index($idauto = null){
+	public function index($idauto = null){ 
 		if($idauto == null){
 			$data = array('codeTimon' => $this->code->get_Code_Type('tipotimon'),
                       'codeTransmision' => $this->code->get_Code_Type('tipotransmision'),
@@ -38,17 +38,6 @@ class Post extends CI_Controller{
 		try {
 			$fecha = date('Y-m-d');
 			if($this->input->is_ajax_request()){
-				/*
-				$upload_folder = '../../assets/img';
-		        $nombre_archivo = $_FILES['file']['name'];
-		        opendir($upload_folder);
-		        $archivador = $upload_folder . '/' . $nombre_archivo;
-		        copy($_FILES['file']['tmp_name'], $archivador);
-		        $tipo_archivo = $_FILES['file']['type'];
-		        $tipo_archivo = $_FILES['file']['type'];
-		        $tamano_archivo = $_FILES['file']['size'];
-		        $tmp_archivo = $_FILES['file']['tmp_name'];
-		        */
 				//AUTO-PUBLISH
 				$data = array(
 					'idmarca'=>$this->input->post('idmarca'),
@@ -68,6 +57,7 @@ class Post extends CI_Controller{
 					'estado' => 1
 				);
 				$this->product->insertProduct($data);
+				//GREGAR CAMPO CORREO EN USUARIO O PERSONA
 				echo 1;
 			} 
 		} catch (Exception $e) {
@@ -76,8 +66,14 @@ class Post extends CI_Controller{
 	}
 
 	public function postId($idauto = null){
-		$data = array('post' => $this->product->get_products_id($idauto),
-					  'comment' => $this->comment->get_Comment_User_Id($_SESSION['idusuario'],$idauto));
+		$data = array();
+		if(isset($_SESSION['idusuario']) == false){
+			$data = array('post' => $this->product->get_products_id($idauto),
+					      'comment' => $this->comment->get_Comment_Car_id($idauto));
+		}else if(isset($_SESSION['idusuario']) == true) {
+			$data = array('post' => $this->product->get_products_id($idauto),
+					      'comment' => $this->comment->get_Comment_User_Id($_SESSION['idusuario'],$idauto));
+		}
 		$this->load->view('publish',$data);
 	}
 
@@ -95,6 +91,23 @@ class Post extends CI_Controller{
 		} catch (Exception $e) {
 			var_dump($e->getMessage());
 		}	
+	}
+
+	public function insertResComment(){
+		try {
+			if($this->input->is_ajax_request()){
+				$data = array(
+					'idauto'=>$this->input->post('idauto'),
+					'idusuario'=> $_SESSION['idusuario'],
+					'comentario'=>$this->input->post('txtaresComment'),
+					'idcomentariopadre'=>$this->input->post('idcomentario')
+				);
+				$this->comment->insertCommentPadre($data);
+				echo 1;
+			}
+		} catch (Exception $e) {
+			var_dump($e->getMessage());
+		}
 	}
 
 	public function update(){
@@ -133,5 +146,101 @@ class Post extends CI_Controller{
 			var_dump($e->getMessage());
 		}
 	}
+
+	public function filtrarAuto(){
+		try { 
+			$txtVehiculo = $this->input->post('txtVehiculo');
+			$data = array('productFilter' => $this->product->get_product_filter($txtVehiculo),
+						  'products' => $this->product->get_products(),
+                      	  'brands' => $this->brand->get_brands());
+			$this->load->view('filtroVehiculo',$data);
+			// if($txtVehiculo != ""){
+				
+			// }else{
+			// 	$ruta = base_url().'index.php/inicio/index';
+			// 	echo "<script>location.href = '".$ruta."' </script>";
+			// }
+		} catch (Exception $e) {
+			var_dump($e->getMessage());
+		}
+	}
+
+	public function filtrarPorMarca($idMarca = null){
+		try {
+			$data = array('productFilter' => $this->product->get_product_brand($idMarca),
+						  'products' => $this->product->get_products(),
+                      	  'brands' => $this->brand->get_brands());
+			$this->load->view('filtroVehiculo',$data);
+		} catch (Exception $e) {
+			var_dump($e->getMessage());
+		}
+	}
+
+	public function filtrarPorPrecio(){
+		try {
+			$txtPrecioFiltro = $this->input->post('txtPrecioFiltro'); 
+			$data = array('productFilter' => $this->product->get_product_Price($txtPrecioFiltro),
+						  'products' => $this->product->get_products(),
+                      	  'brands' => $this->brand->get_brands());
+			$this->load->view('filtroVehiculo',$data);
+		} catch (Exception $e) {
+			var_dump($e->getMessage());
+		}
+	}
+
+	public function filtrarPorAnio(){
+		try {
+			$spinnerAnio = $this->input->post('spinnerAnio'); 
+			$data = array('productFilter' => $this->product->get_product_Year($spinnerAnio),
+						  'products' => $this->product->get_products(),
+                      	  'brands' => $this->brand->get_brands());
+			$this->load->view('filtroVehiculo',$data);
+		} catch (Exception $e) {
+			var_dump($e->getMessage());
+		}
+	}
+
+	public function subirFile(){
+		try {
+			$idauto = $this->input->post('idauto');
+			$idusuario = $this->input->post('idusuario');
+			 $config = [
+				"upload_path" => "./assets/img/app/user",
+				'allowed_types' => "png|jpg"
+			]; 
+	        $this->load->library('upload', $config);
+            // $this->_create_thumbnail($file_info['file_name']); 
+            if ($this->upload->do_upload('file')) {
+            	$datos = array('upload_data' => $this->upload->data()); 
+				$data = array( 
+					'file'=>$datos['upload_data']['file_name']
+				);
+				$this->product->updateProductFile($data,$idauto,$idusuario);
+				$ruta = base_url().'index.php/inicio/perfil';
+				redirect('/inicio/perfil');
+				// echo "<script>location.href = '".$ruta."' </script>";
+            }else{
+            	// something went really wrong show error page
+			    $error = array('error' => $this->upload->display_errors()); 
+			    var_dump($error);
+            }
+		} catch (Exception $e) {
+			var_dump($e->getMessage());
+		}
+	}
+
+	function _create_thumbnail($filename){
+        $config['image_library'] = 'gd2';
+        //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
+        $config['source_image'] = '../../assets/img/app/user'.$filename;
+        $config['create_thumb'] = TRUE;
+        $config['maintain_ratio'] = TRUE;
+        //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
+        $config['new_image']='uploads/thumbs/';
+        $config['width'] = 150;
+        $config['height'] = 150;
+        $this->load->library('image_lib', $config); 
+        $this->image_lib->resize();
+    }
 
 }

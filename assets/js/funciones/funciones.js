@@ -92,7 +92,7 @@ function problemas(){
 function volver(valor){
     switch (valor){
         case 1: //VOLVER A PERFIL
-            window.location.href = base_url+"/oceo2/index.php/inicio/perfil";
+            window.location.href = base_url+"/oceo/index.php/inicio/perfil";
             break;
     }  
 }

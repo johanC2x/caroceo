@@ -10,7 +10,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-6"> 
+                <div class="col-sm-6">  
                     <div class="social-icons pull-right">
                         <ul class="nav navbar-nav">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -60,7 +60,8 @@
                             <!-- PREGUNTAR -->
                             <?php if(isset($login)){ ?>
                                     <?php if($login == 'Si'){ ?>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                    <li><a href="<?= site_url('post/index') ?>"><i class="fa fa-bullhorn"></i>Publica</a></li>
+                                    <li><a href="#"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                     <li><a href="<?= site_url('inicio/perfil') ?>"><i class="fa fa-user"></i> <?php echo $nombre;?></a></li>
                                     <li><a href="<?= site_url('inicio/cerrarsession') ?>"><i class="fa fa-sign-out"></i> Cerrar Sessión</a></li>
                                     <?php }else {?>
@@ -70,7 +71,8 @@
                                     <?php } ?>
                                 <?php } else if (isset($_SESSION['idusuario'])){ ?>
                                     <?php if($_SESSION['idusuario'] != null){ ?>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                    <li><a href="<?= site_url('post/index') ?>"><i class="fa fa-bullhorn"></i>Publica</a></li>
+                                    <li><a href="#"><i class="fa fa-shopping-cart"></i>Cart</a></li>
                                     <li><a href="<?= site_url('inicio/perfil') ?>"><i class="fa fa-user"></i> <?php echo $_SESSION['nombre'];?></a></li>
                                     <li><a href="<?= site_url('inicio/cerrarsession') ?>"><i class="fa fa-sign-out"></i> Cerrar Sessión</a></li>
                                     <?php }else {?>
@@ -100,17 +102,26 @@
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="index.html" class="active">Home</a></li>
-                            <li> <a href="#">Vehículos Nuevos</a></li>
-                            <li> <a href="#">Vehículos Usados</a></li>
+                            <li><a href="<?php echo base_url();?>" class="active">Home</a></li>
+                            <li> <a href="#">Vehículos</a></li>
                             <li> <a href="<?= site_url('post/index') ?>">Publica</a></li>
                         </ul>
                     </div>
 		</div>
                 <div class="col-sm-3">
-                        <div class="search_box pull-right">
-                                <input type="text" placeholder="Search"/>
+                    <div class="pull-right">
+                        <div class="row">  
+                            <form class="form-inline" id="frmFiltroAuto" role="form" method="POST" action="<?php  echo base_url();?>index.php/post/filtrarAuto" >
+                                <div class="form-group">
+                                    <input id="txtVehiculo" name="txtVehiculo" type="text" placeholder="Buscar vehículo" class="form-control" />
+                                </div>  
+                                <div class="form-group" style="padding-top: -30px;" >
+                                    <input type="submit" value="Buscar" class="btn btn-info">
+                                </div>
+                            </form>
+                            <div id="msgFilter"></div>
                         </div>
+                    </div>
                 </div>
             </div>
 	</div>

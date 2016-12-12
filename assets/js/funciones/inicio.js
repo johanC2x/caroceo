@@ -237,3 +237,8 @@ function obtenerPanelSlide(idObjeto){
         }
     });
 }
+
+function filtrarPorAnio(){
+    var frm = document.getElementById("frmSpinnerAnio");
+    frm.submit();
+}

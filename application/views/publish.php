@@ -28,8 +28,11 @@
 							</div>
 							<div class="row">
 								<div class="col-md-8">
-									<img src="<?php echo base_url();?>assets/img/app/default.png" alt=""
-										 height="350px" class="img-thumbnail">	
+									<?php if($fila->file != '' and $fila->file != null){ ?>
+										<img src="<?php echo base_url();?>assets/img/app/user/<?=$fila->file?>" alt="img" height="350px">
+									<?php }else{ ?>
+										<img src="<?php echo base_url();?>assets/img/app/default.png" alt="img" height="350px">
+									<?php } ?>	
 								</div>
 								<div class="col-md-4">
 									<div class="table-responsive">
@@ -81,28 +84,53 @@
         	<?php 
         		if(sizeof($comment) != 0){
         	?>
-        	<h2>  <?php echo sizeof($comment);?> REPUESTAS</h2>
+        	<h2>  <?php echo sizeof($comment);?> PREGUNTA</h2>
         	<ul class="media-list">
+        		<li class="media" >
         		<?php 
         			foreach($comment as $fila):
+        			$idauto = $fila->idauto;
+        			$idcomentario = $fila->idcomentario;
         		?>
-        		<li class="media">
-					<a class="pull-left" href="#">
-						<img class="media-object" src="<?php echo base_url();?>assets/img/blog/man-two.jpg" alt="">
-					</a>
-					<div class="media-body">
-						<ul class="sinlge-post-meta">
-							<li><i class="fa fa-user"></i><?= $fila->nombre." ".$fila->apepat." ".$fila->apemat ?></li>
-							<li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-							<li><i class="fa fa-calendar"></i><?=$fila->creaComment?></li> 
-						</ul>
-						<p><?=$fila->comentario?></p>
-						<a class="btn btn-primary" href=""><i class="fa fa-reply"></i>Replay</a>
-					</div>
-				</li>
+        			<?php if($fila->idcomentariopadre == 0){ ?>
+						<?php //echo "PADRE"; ?>
+						<a class="pull-left" href="#">
+							<img class="media-object" src="<?php echo base_url();?>assets/img/blog/man-two.jpg" alt="">
+						</a>
+						<div class="media-body">
+							<ul class="sinlge-post-meta">
+								<li><i class="fa fa-user"></i><?= $fila->nombre." ".$fila->apepat." ".$fila->apemat ?></li>
+								<li><i class="fa fa-clock-o"></i> 1:33 pm</li>
+								<li><i class="fa fa-calendar"></i><?=$fila->creaComment?></li> 
+							</ul>
+							<p><?=$fila->comentario?></p>
+							<a class="btn btn-primary" data-toggle="modal" data-target="#modalComment">
+								<i class="fa fa-reply"></i> Responder
+							</a>
+						</div>
+        			<?php }else if($fila->idcomentariopadre != 0){ ?>
+						<?php //echo "HIJO"; ?>
+						<div class="media-body" style="float:right;" >
+							<ul class="sinlge-post-meta">
+								<li><i class="fa fa-user"></i><?= $fila->nombre." ".$fila->apepat." ".$fila->apemat ?></li>
+								<li><i class="fa fa-clock-o"></i> 1:33 pm</li>
+								<li><i class="fa fa-calendar"></i><?=$fila->creaComment?></li> 
+							</ul>
+							<p>
+							<span><b>Comento:</b></span>
+							<span style="color:red;font-size:15px;"><i class="fa fa-arrow-right" aria-hidden="true"></i></span> 
+							<?=$fila->comentario?>
+							</p>
+							<a class="btn btn-primary" data-toggle="modal" data-target="#modalComment">
+								<i class="fa fa-reply"></i> Responder
+							</a>
+						</div> 
+        			<?php } ?> 
+					<br/>
 				<?php 
             		endforeach;
             	?>
+            	</li>
             	<?php 
             		}
             	?>
@@ -137,5 +165,34 @@
         </div>	
     </div>
 </section>
+
+<!-- MODAL REPLAY -->
+<div class="modal fade" id="modalComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Publica tu Respuesta</h4>
+      </div>
+      <div class="modal-body">
+		<form role="form" >
+			<div class="text-area">
+				<textarea class="form-control" rows="5" id="txtaresComment">
+				</textarea>
+			</div>
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button onclick="insertarCommentPadre(<?php echo $idcomentario; ?>,<?php echo $idauto; ?>)" 
+        	type="button" class="btn btn-secondary">Responder</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- END -->
+
 <!-- FALTA PIE DE PAGINA -->
 <?php $this->load->view("partial/footer"); ?>

@@ -99,6 +99,7 @@
 <script src="<?php echo base_url();?>assets/js/funciones/<?php echo $nomfuncion;?>" type="text/javascript" language="javascript" charset="UTF-8"></script>
 <script src="<?php echo base_url();?>assets/js/funciones/post.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
 <script src="<?php echo base_url();?>assets/validator/js/bootstrapValidator.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
+<script src="<?php echo base_url();?>assets/js/bootstrap-spinner.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.9/js/bootstrap-dialog.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -116,6 +117,9 @@ $("#lk1").hover(function(){
 }, function(){
     $("#d1").css("display", "none");
 });
+</script>
+<script type="text/javascript">
+    $('#spinnerAnio').('increase');
 </script>
 </body>
 </html>

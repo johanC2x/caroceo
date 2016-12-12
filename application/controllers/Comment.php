@@ -12,7 +12,6 @@
 		public function insert(){		
 		try {
 				if($this->input->is_ajax_request()){
-					echo "llego";exit();
 					$data = array(
 						'idauto'=>$this->input->post('idauto'),
 						'idusuario'=>$this->input->post('idusuario'),
@@ -25,7 +24,6 @@
 				var_dump($e->getMessage());
 			}	
 		}
-
 	}
 
  ?>
