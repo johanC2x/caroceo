@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="<?php echo base_url();?>assets/validator/css/bootstrapValidator.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.9/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
-
+<?php require_once(APPPATH."views/reniec/vendor/autoload.php"); ?>
 <style type="text/css">
 	html {
 		overflow: auto;

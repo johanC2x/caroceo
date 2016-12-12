@@ -79,6 +79,11 @@
                                     <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                     <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                     <li><a href="#" onclick="login_modal();"><i class="fa fa-lock"></i> Login</a></li>
+                                    <li>
+                                        <button type="button" class="btn btn-default btn-xs" style="margin-top: 8px;" onclick="login_modal();">
+                                            <span class="glyphicon glyphicon-lock"></span> Login
+                                        </button>
+                                    </li>
                                     <?php } ?>
                                 <?php } ?>
                         </ul>
@@ -104,6 +109,9 @@
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="<?php echo base_url();?>" class="active">Home</a></li>
                             <li> <a href="#">Vehículos</a></li>
+                            <li><a href="<?= site_url('inicio/index') ?>" class="active">Home</a></li>
+                            <li> <a href="#">Vehículos Nuevos</a></li>
+                            <li> <a href="#">Vehículos Usados</a></li>
                             <li> <a href="<?= site_url('post/index') ?>">Publica</a></li>
                         </ul>
                     </div>
