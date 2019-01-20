@@ -12,23 +12,23 @@ function registrar_usuario(){
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
-        fields: {
-//            nombres: {
-//                feedbackIcons: 'false',
-//                validators: {
-//                    notEmpty: {
-//                        message: 'Debe ingresar los nombres.'
-//                    }
-//                }
-//            },
-//            apellidos: {
-//                feedbackIcons: 'false',
-//                validators: {
-//                    notEmpty: {
-//                        message: 'Debe ingresar los apellidos.'
-//                    }
-//                }
-//            },
+        fields: { 
+           nombres: {
+               feedbackIcons: 'false',
+               validators: {
+                   notEmpty: {
+                       message: 'Debe ingresar los nombres.'
+                   }
+               }
+           },
+           apellidos: {
+               feedbackIcons: 'false',
+               validators: {
+                   notEmpty: {
+                       message: 'Debe ingresar los apellidos.'
+                   }
+                }
+            },
             nrodoc: {
                 feedbackIcons: 'false',
                 validators: {
@@ -102,6 +102,11 @@ function registrar_usuario(){
 }
 
 function enviar_data(){
+    var nombres = $('#nombres').val();
+    if(nombres ==''){
+        console.log(nombres);
+        return false;
+    }
     var ruta = base_url + '/' + pathArray[1] + '/index.php/inicio/json/registro';
     $.ajax({
         url : ruta,
@@ -239,12 +244,13 @@ function filtrarPorAnio(){
 }
 
 function reniec(dni){
+    console.log(dni);
     var url = base_url + '/' + pathArray[1] + '/index.php/inicio/json/datadni';
     var ctn = dni.length;
     $.ajax({
-        url: url,
         type: "POST",
         dataType: "JSON",
+        url: url,
         data: {dni:dni},
         beforeSend:cargando,
         success:function(data){

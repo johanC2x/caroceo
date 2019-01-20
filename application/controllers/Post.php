@@ -14,22 +14,30 @@ class Post extends CI_Controller{
         $this->load->model('comment');
 	}  
 
-	public function index($idauto = null){ 
+	public function index($idauto = null){
+		$data = array();
+		$data['login'] = 'No';
+		$data['nomfuncion'] = 'post.js';
+		$data['alerta'] = 'No'; 
+		$data['usuario'] = '';
+        $data['passw'] = '';
+        if($this->session->userdata('logged_in')){
+        	$data['login'] = 'Si';
+            $session_data = $this->session->userdata('logged_in');
+            $data['idusuario'] = $session_data['idusuario'];
+            $data['nombre'] = $session_data['nombre'];
+        }
 		if($idauto == null){
-			$data = array('codeTimon' => $this->code->get_Code_Type('tipotimon'),
-                      'codeTransmision' => $this->code->get_Code_Type('tipotransmision'),
-                      'codeCombustible' => $this->code->get_Code_Type('tipocombustible'),
-                      'brands' => $this->brand->get_brands());
-			$data['nomfuncion'] = 'post.js';
-			$data['alerta'] = 'No';
-			$data['usuario'] = '';
-	        $data['passw'] = '';
+		    $data['codeTimon'] = $this->code->get_Code_Type('tipotimon');
+	        $data['codeTransmision'] = $this->code->get_Code_Type('tipotransmision');
+	        $data['codeCombustible'] = $this->code->get_Code_Type('tipocombustible');
+	        $data['brands'] = $this->brand->get_brands(); 
 		}else{
-			$data = array('codeTimon' => $this->code->get_Code_Type('tipotimon'),
-                      'codeTransmision' => $this->code->get_Code_Type('tipotransmision'),
-                      'codeCombustible' => $this->code->get_Code_Type('tipocombustible'),
-                      'brands' => $this->brand->get_brands(),
-                      'post' => $this->product->get_products_id($idauto));
+			$data['codeTimon'] = $this->code->get_Code_Type('tipotimon');
+            $data['codeTransmision'] = $this->code->get_Code_Type('tipotransmision');
+            $data['codeCombustible'] = $this->code->get_Code_Type('tipocombustible');
+            $data['brands'] = $this->brand->get_brands();
+            $data['post'] = $this->product->get_products_id($idauto);
 		}
 		$this->load->view('post',$data);
 	}
@@ -65,8 +73,8 @@ class Post extends CI_Controller{
 		} 
 	}
 
-	public function postId($idauto = null){
-		$data = array();
+	public function postId($idauto = null){ 
+		$data = array();		
 		if(isset($_SESSION['idusuario']) == false){
 			$data = array('post' => $this->product->get_products_id($idauto),
 					      'comment' => $this->comment->get_Comment_Car_id($idauto));
@@ -190,7 +198,7 @@ class Post extends CI_Controller{
 
 	public function filtrarPorAnio(){
 		try {
-			$spinnerAnio = $this->input->post('spinnerAnio'); 
+			$spinnerAnio = $this->input->post('spinnerAnio');
 			$data = array('productFilter' => $this->product->get_product_Year($spinnerAnio),
 						  'products' => $this->product->get_products(),
                       	  'brands' => $this->brand->get_brands());
@@ -242,79 +250,5 @@ class Post extends CI_Controller{
         $this->load->library('image_lib', $config); 
         $this->image_lib->resize();
     }
-        
-
-    public function index($idauto = null){
-        $this->load->helper('url');
-        $data = array();
-        $data['login'] = 'No';
-        $data['codeTimon'] = $this->code->get_Code_Type('tipotimon');
-        $data['codeTransmision'] = $this->code->get_Code_Type('tipotransmision');
-        $data['codeCombustible'] = $this->code->get_Code_Type('tipocombustible');
-        $data['brands'] = $this->brand->get_brands();
-        $data['nomfuncion'] = 'post.js';
-        $data['alerta'] = 'No';
-        $data['login'] = 'No';
-        $data['usuario'] = '';
-        $data['passw'] = '';
-        if($this->session->userdata('logged_in')){
-            $data['login'] = 'Si';
-            $session_data = $this->session->userdata('logged_in');
-            $data['nombre'] = $session_data['nombre'];
-            $this->load->view('post',$data);
-        }else{
-            $this->load->view('post',$data);
-        }
-    }
-
-    public function insert(){
-        try {
-            $fecha = date('Y-m-d');
-            if($this->input->is_ajax_request()){
-                $data = array(
-                        'idmarca'=>$this->input->post('idmarca'),
-                        'idusuario' => $_SESSION['idusuario'],
-                        'modelo'=>$this->input->post('modelo'),
-                        'anio'=>$this->input->post('anio'),
-                        'titulo'=>$this->input->post('titulo'),
-                        'precio'=>$this->input->post('precio'),
-                        'nropuertas'=>$this->input->post('nropuertas'),
-                        'color'=>$this->input->post('color'),
-                        'idtipotransmision'=>$this->input->post('idtipotransmision'),
-                        'idtipotimon'=>$this->input->post('idtipotimon'),
-                        'idtipocombustible'=>$this->input->post('idtipocombustible'),
-                        'descripcion' =>$this->input->post('descripcion'),
-                        'fechaini' => $fecha,
-                        'fechafin' => $fecha,
-                        'estado' => 1
-                    );
-                $this->product->insertProduct($data);
-                echo 1;
-            } 
-        } catch (Exception $e) {
-                var_dump($e->getMessage());
-        } 
-    }
-
-    public function postId($idauto = null){
-        $data = array('post' => $this->product->get_products_id($idauto),
-                                  'comment' => $this->comment->get_Comment_User_Id($_SESSION['idusuario'],$idauto));
-        $this->load->view('publish',$data);
-    }
-
-    public function insertComment(){		
-        try{
-            if($this->input->is_ajax_request()){
-                $data = array(
-                        'idauto'=>$this->input->post('idauto'),
-                        'idusuario'=>$this->input->post('idusuario'),
-                        'comentario'=>$this->input->post('comentario')
-                );
-                $this->comment->insertComment($data);
-                echo 1;
-            }
-        }catch (Exception $e) {
-            var_dump($e->getMessage());
-        }	
-    }
+     
 }

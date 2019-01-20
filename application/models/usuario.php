@@ -12,8 +12,8 @@ class Usuario extends CI_Model{
         $this->load->database();
     }
 
-    public function login($datos){
-        $this->db->select('usuario.idusuario,usuario.idtipousuario,persona.nombre'); 
+    public function login($datos){ 
+        $this->db->select('usuario.idusuario,usuario.idtipousuario,persona.nombre,persona.nombres'); 
         $this->db->from($this->table);
         $this->db->join('persona','persona.usuario = usuario.usuario');
         $this->db->where('usuario.usuario', $datos['usuario']);

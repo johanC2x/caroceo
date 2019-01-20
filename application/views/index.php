@@ -69,7 +69,7 @@
                             </button>
                         </span>
                         <form id="frmSpinnerAnio" method="POST" action="<?php echo base_url();?>index.php/post/filtrarPorAnio" >
-                            <input type="text" data-ride="spinner" id="spinnerAnio" class="form-control input-number" value="<?php echo date("Y");; ?>">
+                            <input type="text" data-ride="spinner" id="spinnerAnio" name="spinnerAnio" class="form-control input-number" value="<?php echo date("Y");; ?>">
                         </form>                        
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-default" data-value="increase" data-target="#spinner" data-toggle="spinner">
@@ -106,9 +106,7 @@
                             <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
                         </div>
                     </div><!--/price-range-->
-                    <div class="shipping text-center"><!--shipping-->
-                        <img src="<?php echo base_url();?>assets/img/home/shipping.jpg" alt="" />
-                    </div><!--/shipping-->
+                     
 		</div>
             </div>
             <div class="col-sm-9 padding-right">

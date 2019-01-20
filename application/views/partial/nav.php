@@ -5,8 +5,8 @@
                 <div class="col-sm-6">
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
-                            <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i> +51-994380412</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i> dscubreautos@oceo.com</a></li>
                         </ul>
                     </div>
                 </div>
@@ -32,6 +32,7 @@
                     <div class="logo pull-left">
                         <a href="<?php echo base_url();?>"><img src="<?php echo base_url();?>assets/img/home/logo.png" alt="" /></a>
                     </div>
+                <!--
                     <div class="btn-group pull-right">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
@@ -53,6 +54,7 @@
                             </ul>
                         </div>
                     </div>
+                -->
                 </div>
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
@@ -64,9 +66,9 @@
                                     <li><a href="#"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                     <li><a href="<?= site_url('inicio/perfil') ?>"><i class="fa fa-user"></i> <?php echo $nombre;?></a></li>
                                     <li><a href="<?= site_url('inicio/cerrarsession') ?>"><i class="fa fa-sign-out"></i> Cerrar Sessión</a></li>
-                                    <?php }else {?>
-                                    <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                    <?php }else{?>
+                                    <!--<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>-->
+                                    <!--<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>>-->
                                     <li><a href="#" onclick="login_modal();"><i class="fa fa-lock"></i> Login</a></li>
                                     <?php } ?>
                                 <?php } else if (isset($_SESSION['idusuario'])){ ?>
@@ -76,8 +78,8 @@
                                     <li><a href="<?= site_url('inicio/perfil') ?>"><i class="fa fa-user"></i> <?php echo $_SESSION['nombre'];?></a></li>
                                     <li><a href="<?= site_url('inicio/cerrarsession') ?>"><i class="fa fa-sign-out"></i> Cerrar Sessión</a></li>
                                     <?php }else {?>
-                                    <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                    <!--<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>-->
+                                    <!--<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>>-->
                                     <li><a href="#" onclick="login_modal();"><i class="fa fa-lock"></i> Login</a></li>
                                     <li>
                                         <button type="button" class="btn btn-default btn-xs" style="margin-top: 8px;" onclick="login_modal();">
@@ -101,17 +103,14 @@
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span> 
                             <span class="icon-bar"></span>
                         </button>
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="<?php echo base_url();?>" class="active">Home</a></li>
-                            <li> <a href="#">Vehículos</a></li>
                             <li><a href="<?= site_url('inicio/index') ?>" class="active">Home</a></li>
-                            <li> <a href="#">Vehículos Nuevos</a></li>
-                            <li> <a href="#">Vehículos Usados</a></li>
+                            <!--<li> <a href="#">Vehículos</a></li>-->
                             <li> <a href="<?= site_url('post/index') ?>">Publica</a></li>
                         </ul>
                     </div>
